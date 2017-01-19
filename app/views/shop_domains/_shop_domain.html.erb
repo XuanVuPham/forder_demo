@@ -10,13 +10,25 @@
   </td>
   <td><%= shop_domain.shop.products.size %></td>
   <td class="text-center">
-    <strong>
-      <%= link_to t("accept"),
-        shop_domain_path(shop_domain, status: :approved), method: :put %>
-    </strong><br>
-    <strong>
-      <%= link_to t("delete"),
-        shop_domain_path(shop_domain, status: :rejected), method: :put %>
-    </strong>
+    <% if shop_domain.domain.belong_to?(current_user) ||
+      shop_domain.domain.manage_by?(current_user) %>
+      <% if !shop_domain.approved? %>
+        <strong>
+          <%= link_to t("accept"),
+            shop_domain_path(shop_domain, status: :approved), method: :put %>
+        </strong><br>
+        <strong>
+          <%= link_to t("delete"),
+            shop_domain_path(shop_domain, status: :rejected), method: :put %>
+        </strong>
+      <% else %>
+        <%= link_to t("manage_domain.delete_shop"), 
+          shop_domain_path(shop_domain, 
+          domain_id: shop_domain.domain.id, shop_id: shop_domain.shop.id), 
+          method: :delete, 
+          class: "btn btn-danger btn_block"
+        %>
+      <% end %>
+    <% end %>
   </td>
 </tr>

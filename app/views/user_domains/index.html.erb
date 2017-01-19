@@ -1,0 +1,17 @@
+<h1 class="text-center title"><%= t "manage.user" %></h1>
+<table class="table table-striped table-hover table-bordered">
+  <thead class="">
+    <tr>
+      <th><%= t "common.number" %></th>
+      <th><%= t ".name" %></th>
+      <th><%= t ".email" %></th>
+      <th><%= t ".chatwork" %></th>
+      <th><%= t ".avatar" %></th>
+      <th><%= t ".description" %></th>
+      <th><%= t ".actions" %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <%= render @users %>
+  </tbody>
+</table>

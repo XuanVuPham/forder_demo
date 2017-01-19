@@ -15,10 +15,30 @@
         <% if !current_user? user %>
           <% user_domain = UserDomain.find_by(user_id: user.id, 
             domain_id: @choosen_domain.id) %>
-          <%= link_to t("delete"),
-            user_domain_path(user_domain.id, user_id: user.id, 
-            domain_id: @choosen_domain.id),
-            method: :delete, class: "btn btn-danger btn_block" %>
+          <% if @choosen_domain.belong_to?(current_user) %>
+            <%= link_to t("delete"),
+              user_domain_path(user_domain.id, user_id: user.id, 
+              domain_id: @choosen_domain.id),
+              method: :delete, class: "btn btn-danger btn_block" %>
+            <% if user_domain.member? %>
+              <%= link_to t("manage_domain.manager"), 
+                user_domain_path(user_domain, role: :manager),
+                method: :patch, class: "btn btn-primary" %>
+            <% end %>
+            <% if user_domain.manager? %>
+              <%= link_to t("manage_domain.remove"), 
+              user_domain_path(user_domain, role: :member),
+              method: :patch, class: "btn btn-primary btn-warning" %>
+            <% end %>
+          <% else %>
+            <% unless (@choosen_domain.belong_to?(user) ||
+              user_domain.manager?) %>
+              <%= link_to t("delete"),
+                user_domain_path(user_domain.id, user_id: user.id, 
+                domain_id: @choosen_domain.id),
+                method: :delete, class: "btn btn-danger btn_block" %>
+            <% end %>
+          <% end %>
         <% end %>
       <% else %>
         <%= link_to t("add"), user_domains_path(user_id: user.id, 

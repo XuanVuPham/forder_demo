@@ -6,7 +6,8 @@ class DomainsController < ApplicationController
   before_action :active_account, only: :create
 
   def index
-    @domains = current_user.domains.by_creator current_user.id
+    @own_domains = current_user.domains.by_creator current_user.id
+    @member_domains = current_user.domains.member current_user.id
   end
 
   def new

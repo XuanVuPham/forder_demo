@@ -94,4 +94,8 @@ module ApplicationHelper
   def domain_icon domain
     domain.professed? ? Settings.domain.professed : Settings.domain.secret
   end
+
+  def find_user_domain user_id, domain_id
+    user_domain = UserDomain.find_by user_id: user_id, domain_id: domain_id
+  end
 end
