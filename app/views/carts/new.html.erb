@@ -24,8 +24,8 @@
   <% end %>
   <% if @domain.present? %>
     <%= link_to t("cancel"), domain_carts_path(@domain), method: :get, class: "list btn btn-primary btn-action"%>
-    <% if @all_order_deleted.empty? %>
-      <%= link_to t("continue"), domain_orders_path(@domain), method: :post, class: "btn btn_add_to_cart btn-add" %>
+    <% if @shop.present? %>
+      <%= link_to t("continue"), edit_carts_path( shop_id:@products_deleted.first.shop.id), class: "btn btn_add_to_cart btn-add" %>
     <% else %>
       <%= link_to t("continue"), domain_carts_path(@domain), method: :post, class: "btn btn_add_to_cart btn-add" %>
     <% end %>

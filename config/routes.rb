@@ -80,4 +80,5 @@ Rails.application.routes.draw do
   get "search(/:search)", to: "searches#index", as: :search
 
   resources :request_shop_domains
+  resources :edit_carts
 end

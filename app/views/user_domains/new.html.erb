@@ -10,7 +10,7 @@
             <div class="form-group">
               <%= email_field_tag :email, nil, class: "form-control"%>
             </div>
-            <%= link_to t("done"), domains_path, class: "btn btn-warning" %>
+            <%= link_to t("continue"), domain_dashboard_shops_path(@domain), class: "btn btn-warning" %>
             <%= submit_tag  t("add"), class: "btn btn-primary space-top-submit" %>
           <% end %>
         </div>
