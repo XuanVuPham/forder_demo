@@ -1,0 +1,19 @@
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th><%= t "oder.id" %></th>
+      <th><%= t "oder.name" %></th>
+      <th><%= t "oder.quantity" %></th>
+      <th><%= t "oder.price" %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @order_products.each_with_index do |item, index| %>
+      <tr>
+        <td><%= index + 1 %></td>
+        <td><%= item.user_name %></td>
+        <td><%= item.price %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

@@ -1,0 +1,38 @@
+<div class="col-md-12 magin_top_10px" id="id_shops_list">
+  <% if @products.empty? %>
+    <div class="center jumbotron">
+      <p><%= t ".empty_list" %></p>
+      <%= link_to (t".new_button"), new_dashboard_shop_product_path,
+        class: "btn btn-lg btn-primary" %>
+    </div>
+  <% else %>
+    <% @products.each do |product| %>
+      <div class="col-md-4">
+        <div class="col-md-12 product">
+          <div class="content">
+            <div><%= image_tag product.image.url %></div>
+            <hr/>
+            <div>
+              <p class="title"><%= product.name %></p>
+              <p><%= product.description %></p>
+            </div>
+            <hr/>
+            <div>
+              <p class="price"><%= product.price %></p>
+            </div>
+            <hr/>
+            <div>
+              <input type="hidden" value="<%= product.id %>" class="product_id">
+              <input type="hidden" value="<%= @shop.id %>" class="shop_id">
+              <%= link_to (t".delete"),
+                dashboard_shop_product_path(@shop, product),
+                method: :delete, class: "btn btn-sm btn-danger" %>
+              <input type="button" value="<%= product.status %>"
+                class="btn btn-sm btn-danger id_btn_active" >
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  <% end %>
+</div>

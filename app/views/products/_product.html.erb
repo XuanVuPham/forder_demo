@@ -1,0 +1,79 @@
+<div class="product_item_wrapper col-md-3 margin-top-5-bot-5 item-produc-shop">
+  <div class="product_content_area">
+    <div class="image_product">
+      <% if @domain.present? %>
+        <%= link_to domain_product_path(@domain, product) do %>
+          <%= image_tag product.image.url, class: "image-shop height-27375" %>
+        <% end %>
+      <% else %>
+        <%= link_to product_path(product, domain_id: "not_find") do %>
+          <%= image_tag product.image.url, class: "image-shop height-27375" %>
+        <% end %>
+      <% end %>
+      <h3>
+        <%= t "cart.order_time_text" %>
+        <%= l product.start_hour, format: :short_time %>
+        <%= t "split" %>
+        <%= l product.end_hour, format: :short_time %>
+      </h3>
+    </div>
+  </div>
+  <div class="padding-10">
+    <div class="description_area row">
+      <div class="col-md-4">
+        <% if @domain.present? %>
+          <%= link_to domain_product_path(@domain, product) do %>
+          <span class="shop-avatar">
+            <% if product.shop_avatar.nil? %>
+              <%= image_tag "default_shop_avatar" %>
+            <% else %>
+              <%= image_tag product.shop_avatar.url, class:"image-home" %>
+            <% end %>
+          </span>
+          <% end %>
+        <% end %>
+      </div>
+      <% if @domain.present? %>
+        <div class="col-md-8">
+          <div>
+            <strong><%= link_to product.shop_name,
+              domain_shop_path(@domain, product.shop) %>
+            </strong>
+          </div>
+          <div class="product_text height-50">
+            <strong><%= product.name %></strong>
+          </div>
+          <div class="product_text">
+            <%= format_price product.price %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+    <div class="interaction_area">
+      <% if Time.now.is_between_short_time?(product.start_hour, product.end_hour) || !product.shop.active? %>
+        <%= link_to cart_path(product.id), remote: true,
+          method: :put, class: "btn btn_add_to_cart btn-add disabled" do %>
+          <span class="glyphicon glyphicon-shopping-cart"></span>
+          <%= t "cart.add_to_card" %>
+        <% end %>
+      <% else %>
+        <%= link_to cart_path(product.id), remote: true,
+          method: :put, class: "btn btn_add_to_cart btn-add" do %>
+          <span class="glyphicon glyphicon-shopping-cart"></span>
+          <%= t "cart.add_to_card" %>
+        <% end %>
+      <% end %>
+      <% if @domain.present? %>
+        <%= link_to domain_product_path(@domain, product), class: "btn btn-default btn_add_favorite" do %>
+          <span class="glyphicon glyphicon-eye-open"></span>
+          <%= t "common.view_button" %>
+        <% end %>
+      <% else %>
+        <%= link_to product_path(product, domain_id: "not_find"), class: "btn btn-default btn_add_favorite" do %>
+          <span class="glyphicon glyphicon-eye-open"></span>
+          <%= t "common.view_button" %>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>

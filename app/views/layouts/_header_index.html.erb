@@ -1,0 +1,32 @@
+<div class="header-index">
+  <nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+      <ul class="nav navbar-nav">
+        <%= link_to root_path, class: "navbar-brand logo-size-fixed" do %>
+          <%= image_tag "framgia.png" %>
+        <% end %>        
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li><%= link_to content_tag(:strong, t("home")), root_path, class: "padding-l" %></li>
+        <li><div class="language"><strong><%= t "language" %></strong></div></li>
+        <li class="navbar-user dropdown">
+          <a href="#" id="basic-nav-dropdown" data-toggle="dropdown"
+            class="dropdown-toggle user-avatar" role="button">
+            <%= image_tag select_lang, class: "image-flag" %>
+            <b class="caret"></b>
+          </a>
+          <ul class="dropdown-menu languages select-default" role="menu"
+            aria-labelledby="basic-nav-dropdown">
+            <% Settings.languages.each do |key, value| %>
+              <li role="presentation" class="" data-lang="<%= value.type %>">
+                <%= image_tag value.image, class: "image-flag" %>
+                <p><%= value.name %></p>
+              </li>
+              <div class="clearfix"></div>
+            <% end %>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </nav>
+</div>

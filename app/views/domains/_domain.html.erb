@@ -1,0 +1,53 @@
+<tr>
+  <td><%= domain.id %></td>
+  <td>
+    <% if check_domain_status domain %>
+      <i class="glyphicon glyphicon-globe">
+    <% else %>
+      <i class="glyphicon glyphicon-lock">
+    <% end %>
+    <%= link_to domain.name, domain_path(domain) %>
+    <a href="#" id="basic-nav-dropdown" data-toggle="dropdown"
+      class="dropdown-toggle" role="button">
+      <div>
+        <span class="user-title">
+          <b class="caret"></b>
+        </span>
+      </div>
+    </a>
+    <ul class="dropdown-menu" role="menu"
+      aria-labelledby="basic-nav-dropdown">
+      <% Domain.statuses.each do |key, value| %>
+        <li role="presentation">
+          <%= link_to domain_path(domain, status: key), method: :put do %>
+            <% if value == Domain.statuses[:professed] %>
+              <i class="glyphicon glyphicon-globe"></i>
+              <span><%= t "professed" %></span>
+            <% else %>
+              <i class="glyphicon glyphicon-lock"></i>
+              <span><%= t "secret" %></span>
+            <% end %>
+
+          <% end %>
+        </li>
+        <li role="separator" class="divider"></li>
+        <li role="separator" class="divider"></li>
+      <% end %>
+    </ul>
+  </td>
+  <td><%= domain.users.size %></td>
+  <td><%= domain.shop_domains.approved.size %></td>
+  <td><%= domain.products.size %></td>
+  <td>
+    <strong>
+      <%= link_to t("edit_member"), new_user_domain_path(domain_id: domain.id),
+        method: :get %>
+    </strong><br>
+    <strong>
+      <%= link_to shop_domains_path(domain_id: domain.id) do %>
+        <%= t("shop_request") %>
+        <%= domain.shop_domains.pending.size %>
+      <% end %>
+    </strong>
+  </td>
+</tr>

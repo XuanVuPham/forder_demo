@@ -1,0 +1,20 @@
+<% if users.blank? %>
+  <li>
+    <div class="btn btn-default btn-block">
+      <%= t "livesearch.no_result", name: params[:search] %>
+    </div>
+  </li>
+<% else %>
+  <div class="scrollable-menu">
+    <% users.each do |user| %>
+      <%= render "users/live_search_item", user: user %>
+    <% end %>
+  </div>
+  <li class="divider"></li>
+  <li>
+    <div class="btn btn-default btn-block">
+      <%= t "livesearch.see_more", num: users.size,
+        name: params[:search] %>
+    </div>
+  </li>
+<% end %>

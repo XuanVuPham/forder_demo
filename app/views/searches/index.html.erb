@@ -1,0 +1,23 @@
+<% if @items.blank? %>
+  <div class="row">
+    <h2 class="section_title">
+      <%= t "livesearch.no_result", name: params[:search] %>
+    </h2>
+  </div>
+<% else %>
+  <div class="row">
+    <h2 class="section_title">
+      <%= t "livesearch.see_more", num: @items.size,
+        name: params[:search] ||= t("livesearch.search_all") %>
+    </h2>
+  </div>
+  <div class="container">
+    <% @items.each do |item| %>
+      <% if item.is_a? Product %>
+        <%= render "products/search_item", product: item %>
+      <% elsif item.is_a? Shop %>
+        <%= render "shops/search_item", shop: item %>
+      <% end %>
+    <% end %>
+  </div>
+<% end %>

@@ -1,0 +1,31 @@
+  <div class="row">
+    <div class="col-lg-offset-3 col-lg-6 form-sign">
+      <%= form_for [:admin, @user] do |f| %>
+        <div class="field">
+          <%= f.label :name %>
+          <%= f.text_field :name, class: "form-control" %>
+        </div>
+        <div class="field">
+          <%= f.label :email %><br />
+          <%= f.email_field :email, autofocus: true, class: "form-control" %>
+        </div>
+        <div class="field">
+          <%= f.label :password %>
+          <% if @minimum_password_length %>
+            <em>(<%= @minimum_password_length %> characters minimum)</em>
+          <% end %><br />
+          <%= f.password_field :password, autocomplete: "off",
+            class: "form-control" %>
+        </div>
+        <div class="field">
+          <%= f.label :password_confirmation %><br />
+          <%= f.password_field :password_confirmation, autocomplete: "off",
+            class: "form-control" %>
+        </div>
+        <div class="actions text-center margin-top-10">
+          <%= f.submit yield(:submit_button), class: "btn btn-default btn-sign" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

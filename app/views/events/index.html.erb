@@ -1,0 +1,11 @@
+<% if user_signed_in? %>
+  <div class="col-md-8">
+    <div class="row notification-title">
+      <h3 class="text-primary"><%= t "notification.index" %></h3>
+    </div>
+    <div id="events">
+      <%= render "list_events" %>
+    </div>
+  </div>
+<% end %>
+

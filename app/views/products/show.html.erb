@@ -1,0 +1,122 @@
+<div class="line">
+  <div class="unit7">
+    <div class="m-panel pad-50">
+      <div class="aligner-c" id="product_preview">
+        <%= image_tag @product.image.url, class: "set-image" %>
+      </div>
+    </div>
+    <div class="a-divider--hidden"></div>
+    <div class="share-product">
+      <%= social_share_button_tag @product.name %>
+    </div>
+    <div class="fb-like" data-href="<%= request.original_url %>"
+      data-layout="standard" data-action="like"></div>
+    <ul class="tags">
+      <% @product.tags.each do |tag| %>
+        <li><%= link_to tag.name, tag_path(tag), class: "tag" %></li>
+      <% end %>
+    </ul>
+    <div class="a-divider--hidden"></div>
+    <div class="bordered rounded bg-eb-white">
+      <%= render "shared/comments", object: @product, comment: @comment,
+        comments: @comments %>
+    </div>
+  </div>
+
+  <div class="unit5">
+    <div class="m-panel pad-50">
+      <h3 class="capcase lead mar-bottom-20">
+        <strong>
+          <%= @product.name %>
+          <%= link_to cart_path(@product.id), remote: true,
+            method: :put, class: "btn btn_add_to_cart btn-add",
+            disabled: Time.now.is_between_short_time?(@product.start_hour, @product.end_hour) do %>
+            <span class="glyphicon glyphicon-shopping-cart"></span>
+            <%= t "cart.add_to_card" %>
+          <% end %>
+        </strong>
+      </h3>
+      <div class="a-divider--fit"></div>
+      <div class="aligner-jsc wp100 h40">
+        <p class="lead eb-orange mar-bottom-0">
+          <h3>
+            <%= format_price @product.price %>
+          </h3>
+        </p>
+      </div>
+      <div class="a-divider--fit mar-bottom-30"></div>
+      <div class="mar-bottom-20">
+        <h3>
+          <%= t "cart.order_time_text" %>
+          <%= l @product.start_hour, format: :short_time %>-
+          <%= l @product.end_hour, format: :short_time %>
+        </h3>
+      </div>
+      <div class="mar-bottom-20">
+        <p><%= @product.description %></p>
+      </div>
+      <div class="hide mar-bottom-20">
+        <p><%= @product.description %></p>
+        <div class="mar-bottom-30">
+          <div class="a-divider--fit"></div>
+        </div>
+        <%= link_to cart_path(@product.id), remote: true,
+          method: :put, class: "btn btn-warning" do %>
+          <span class="glyphicon glyphicon-shopping-cart"></span>
+          <%= t "cart.add_to_card" %>
+        <% end %>
+      </div>
+      <div class="a-divider--hidden"></div>
+    </div>
+    <div class="m-panel m-panel-item">
+      <div class="row">
+        <div class="col-md-2">
+          <span class="shop-thumbnail">
+            <%= image_tag @product.shop_avatar.url %>
+          </span>
+        </div>
+        <div class="col-md-10">
+          <h3>
+            <%= link_to @product.shop_name, @product.shop,
+              class: "capcase lead mar-bottom-20" %>
+          </h3>
+          <p class="smallcaps mar-right-10">
+            <%= t "common.product_number",
+              number: @product.shop.products.size %>
+          </p>
+        </div>
+      </div>
+      <div class="m-panel__content">
+        <div class="line">
+          <% @product.shop.products.each do |product| %>
+            <div class="unit3">
+              <% if @domain.present? %>
+                <%= link_to domain_product_path(@domain, product) do %>
+                  <span class="product-thumbnail">
+                    <%= image_tag product.image.url, alt: product.name, class: "product-show" %>
+                  </span>
+                <% end %>
+              <% else %>
+                <%= link_to product_path(product, domain_id: "not_find") do %>
+                  <span class="product-thumbnail">
+                    <%= image_tag product.image.url, alt: product.name, class: "product-show" %>
+                  </span>
+                <% end %>
+              <% end %>
+            </div>
+          <% end %>
+        </div>
+        <div class="a-divider--fit"></div>
+        <div class="unit">
+          <% if @domain.present? %>
+            <%= link_to t("common.btn_view_all"), domain_shop_path(@domain, @product.shop),
+              class: "btn btn-success btn-block" %>
+          <% else %>
+            <%= link_to t("common.btn_view_all"), domain_shop_path(@product.shop, domain_id: "not_find"),
+              class: "btn btn-success btn-block" %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

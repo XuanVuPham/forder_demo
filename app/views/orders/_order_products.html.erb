@@ -1,0 +1,30 @@
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th class="text-center"><%= t "oder.id" %></th>
+      <th class="text-center"><%= t "oder.name" %></th>
+      <th class="text-center"><%= t "oder.image" %></th>
+      <th class="text-center"><%= t "oder.quantity" %></th>
+      <th class="text-center width_status"><%= t ".status" %></th>
+      <th class="width_price text_right"><%= t "oder.price" %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% order_products.each_with_index do |item, index| %>
+      <tr id="<%= item.product_id %>">
+        <td class="text-center"><%= index + 1 %></td>
+        <td class="text-center"><%= item.product.name %></td>
+        <td class="width_image">
+          <span>
+            <%= image_tag item.product.image.url, class: "image_box" %>
+          </span>
+        </td>
+        <td class="text-center"><%= item.quantity %></td>
+        <td class="text-center">
+          <%= status_order_product item if item.try(:status).present? %></td>
+        <td class="right">
+          <strong><%= format_price item.total_price %></strong></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

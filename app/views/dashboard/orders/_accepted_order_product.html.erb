@@ -1,0 +1,11 @@
+<tr>
+  <td><%= accepted_order_product_counter + Settings.order_increase %></td>
+  <td>
+    <%= link_to accepted_order_product.name,
+      dashboard_shop_product_path(accepted_order_product.product.shop_id,
+      accepted_order_product.product.id, order_product_id: accepted_order_product.id) %>
+  </td>
+  <td><%= accepted_order_product.quantity %></td>
+  <td><%= format_price accepted_order_product.price
+  %></td>
+</tr>

@@ -1,0 +1,37 @@
+<div class="bordered rounded detailBox col-md-12">
+  <div class="titleBox">
+    <label><%= t ".comment_box" %></label>
+    <button type="button" class="close" aria-hidden="true">&times;</button>
+  </div>
+  <div class="commentBox">
+    <p class="taskDescription">
+      <% if user_signed_in? %>
+        <%= t ".can_comment_text" %>
+      <% else %>
+        <%= t ".cant_comment_text" %>
+      <% end %>
+    </p>
+  </div>
+  <div class="actionBox">
+    <% if user_signed_in? %>
+      <div class="row">
+        <%= form_for [object, comment] do |f| %>
+          <div class="col-md-10">
+            <%= f.text_field :content, class: "form-control",
+              placeholder: t(".comment_placeholder_text") %>
+          </div>
+          <%= f.hidden_field :user_id, value: current_user.id %>
+          <div class="col-md-2">
+            <%= f.submit t(".comment_button"), class: "btn btn-default" %>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+    <div id="fb-root"></div>
+    <div class="fb-comments" data-href="<%= request.original_url %>"
+      data-num-posts="<%= Settings.comment.num_posts %>"></div>
+    <ul class="commentList">
+      <%= render comments %>
+    </ul>
+  </div>
+</div>

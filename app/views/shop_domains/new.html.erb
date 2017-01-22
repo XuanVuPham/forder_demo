@@ -1,0 +1,13 @@
+<div class="row">
+  <h2 class="row_h2">
+    <%= t "common.your_shops" %>
+    <div class="btn_view_all_wrapper pull-right">
+      <%= link_to t("common.btn_request"), "#",
+        class: "btn btn_view_all btn-warning" %>
+    </div>
+  </h2>
+</div>
+<div class="col-md-12 magin text-center max-width" id="id_shops_list">
+  <%= render @shops %>
+</div>
+<%= paginate @shops %>

@@ -1,0 +1,45 @@
+<% order_products.each do |key, value| %>
+  <div class="panel panel-default">
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <div class="order-status-2 orders">
+          <span class="pull-left">
+            <strong><%= key %></strong>
+          </span>
+        </div>
+      </div>
+    </div>
+    <div class="panel-body orders-hidden">
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th><%= t "order_statistics.id" %></th>
+            <th><%= t "order_statistics.name" %></th>
+            <th class="text-center"><%= t "order_statistics.quantity" %></th>
+            <th class="text-center"><%= t "order_statistics.price" %></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% value.each_with_index do |order_product, index| %>
+            <tr>
+              <td><%= increase_one index %></td>
+              <td>
+                <%= link_to order_product.name,
+                  dashboard_shop_product_path(order_product.product.shop_id,
+                  order_product.product.id, order_product_id: order_product.id)%>
+              </td>
+              <td class="text-center"><%= order_product.quantity %></td>
+              <td class="text-center">
+                <strong><%= format_price order_product.price %></strong>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+      <strong class="into-left">
+        <%= t "order_statistics.total_price" %>
+        <%= format_price value.sum &:price %>
+      </strong>
+    </div>
+  </div>
+<% end %>

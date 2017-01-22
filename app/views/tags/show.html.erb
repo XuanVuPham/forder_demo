@@ -1,0 +1,9 @@
+<div class="row">
+  <h2 class="section_title">
+    <%= @tag.name %>
+  </h2>
+</div>
+<div class="col-md-12 magin_top_10px" id="id_products_list">
+  <%= render @products %>
+  <%= paginate @products %>
+</div>

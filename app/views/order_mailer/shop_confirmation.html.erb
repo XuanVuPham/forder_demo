@@ -1,0 +1,17 @@
+<h3><%= t "order_mailer.title" %></h3>
+<table style="border: 1px solid black; color:blue; width: 400px; height: 100px;">
+  <thead  style="border-bottom: 1px solid black; text-align: center;">
+    <tr>
+      <th><%= t ".name" %></th>
+      <th><%= t ".quantity" %></th>
+      <th><%= t ".status" %></th>
+    </tr>
+  </thead>
+  <tbody style="text-align: center;">
+    <tr>
+      <td><%= @product_order.product_name %></td>
+      <td><%= @product_order.quantity %></td>
+      <td><%= @product_order.status %></td>
+    </tr>
+  </tbody>
+</table>

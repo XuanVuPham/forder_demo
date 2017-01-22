@@ -1,0 +1,11 @@
+<div class="panel panel-default">
+  <div class="panel-body">
+    <strong><%= t"oder.status" %></strong>
+    <%= status_order order %>
+    <% if order.pending? %>
+      <%= link_to t("oder.btn_cancel_oder"), order_path(order, shop_id: order.shop_id),
+        method: :delete, class: "btn btn-xs btn-danger pull-right" %>
+    <% end %>
+  </div>
+</div>
+<%= render "list", order: order %>

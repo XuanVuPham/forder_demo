@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= full_title yield(:title) %></title>
+    <%= stylesheet_link_tag "application", media: "all", "data-turbolinks-track": true %>
+    <%= javascript_include_tag "application", "data-turbolinks-track": true %>
+    <%= csrf_meta_tags %>
+    <%= action_cable_meta_tag %>
+  </head>
+  <body>
+    <% if user_signed_in? %>
+      <%= render "layouts/header" %>
+    <% else %>
+      <%= render "layouts/header_index" %>
+    <% end %>
+    <div class="container home-body">
+      <div class="flash-messages">
+        <%= render "layouts/messages" %>
+      </div>
+      <%= yield %>
+    </div>
+    <div class="row margin-to co-black">
+      <div class="col-sm-4 text-default padding-duong">
+        <h1 class="com-name"><strong><%= t("company") %></strong></h1>
+        <h5>
+          <strong class="text-default">
+            <%= link_to t("home"), root_path %><br>
+            <%= link_to t("document"),
+              "https://drive.google.com/
+            file/d/0Bw0Y2BhwI-7xQjdPWjdzSFRoMVk/view?usp=sharing",
+              target: "_blank" %>
+          </strong>
+        </h5>
+        <h5 class="text-default"><%= t "com-infor" %></h5>
+      </div>
+      <div class="col-sm-4 padding-duong text-default">
+        <i class="fa fa-map-marker fa-2x default-icon address-icon"></i>
+        <%= t "com-add" %>
+        </br>
+        <i class="fa fa-mobile fa-2x default-icon"></i>
+        <%= t "phone-num" %>
+        </br>
+        <i class="fa fa-envelope default-icon text-default" aria-hidden="true"></i>
+        <%= mail_to t "com-email" %>
+      </div>
+      <div class="col-sm-4 padding-duong text-default">
+        <%= t "about_label" %>
+        <%= t "com-detail" %>
+        </br>
+        <%= link_to t("feed_back"), "https://docs.google.com/
+              forms/d/e/1FAIpQLSeWye6zJ8U7epz5W3G5MDZTT8YE5rWELbHDpyRtD4drC0QrGw/
+              viewform", target: "_blank", class: "text-default" %>
+      </div>
+    </div>
+  </body>
+</html>

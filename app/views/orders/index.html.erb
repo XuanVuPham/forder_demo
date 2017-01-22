@@ -1,0 +1,56 @@
+<div class="panel panel-default width_box_search height_search_box">
+  <div class="search_between margin_top_15px">
+    <div class="row">
+      <%= form_tag orders_path, method: :get do |f| %>
+        <div class="col-md-1 margin my-margin">
+          <span class="label-span">
+            <%= t("start") %>
+          </span>
+        </div>
+        <div class="col-md-2">
+          <%= text_field_tag :start_date, params[:start_date],
+            class: "form-control datetimepicker",
+            placeholder: t("time.formats.date_format") %>
+        </div>
+        <div class="col-md-1 margin my-margin">
+          <span class="label-span">
+            <%= t("end") %>
+          </span>
+        </div>
+        <div class="col-md-2">
+          <%= text_field_tag :end_date, params[:end_date],
+            class: "form-control datepicker2",
+            placeholder: t("time.formats.date_format") %>
+        </div>
+        <div class="col-md-4 margin5">
+          <% Settings.filter_status_order.each do |key, value| %>
+            <%= label_tag value, class: "radio-inline" do %>
+              <%= radio_button_tag :status, value,
+                checked = params[:status] == value || params[:status].blank? %>
+              <%= value.titleize %>
+            <% end %>
+          <% end %>
+        </div>
+        <div class="col-md-1">
+          <%= submit_tag t("btn_search"), class: "btn btn-primary" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+<div class="page-content">
+  <div class="container">
+    <% if @order_days.any? %>
+      <div class="row margin_top_-30px">
+        <% @order_days.sort.each do |day, orders|  %>
+          <h3><dt><%= t "order_day" %>: <%= I18n.localize day, format: :short_date %></dt></h3>
+          <% orders.each do |order| %>
+            <%= render "list", order: order %>
+          <% end %>
+        <% end %>
+      </div>
+    <% else %>
+      <h3><%= t "have_no_order" %></h3>
+    <% end %>
+  </div>
+</div>

@@ -1,0 +1,33 @@
+<div class="page-content">
+  <% if @cart_shop.present? %>
+    <div class="container">
+      <div class="row">
+        <%= render "order_products", order_products: @cart_shop.items %>
+        <div class="pull-left">
+          <div class="col-md-4">
+            <%= simple_form_for @order do |f| %>
+              <% if @domain.present? %>
+                <%= link_to t("order_statistics.back"), domain_carts_path(@domain),
+                  class: "btn btn-primary defaut-position" %>
+                <%= link_to t("create_order"), domain_orders_path(@domain, shop_id: @shop.id),
+                  method: :post, class: "btn btn-danger margin_order" %>
+              <% else %>
+                <%= link_to t("order_statistics.back"), carts_path,
+                  class: "btn btn-primary defaut-position" %>
+                <%= f.submit t("create_order"), data: {confirm: t("confirm")},
+                  class: "btn btn-danger margin_order" %>
+                <%= hidden_field_tag :shop_id, @shop.id %>
+              <% end %>
+            <% end %>
+          </div>
+        </div>
+        <div class="pull-right">
+          <h4 class="style_price">
+            <b><%= t "oder.total" %></b>
+            <%= format_price @cart_shop.total_price %>
+            </h4>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>

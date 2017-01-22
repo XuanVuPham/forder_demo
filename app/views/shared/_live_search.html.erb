@@ -1,0 +1,26 @@
+<% if items.blank? %>
+  <li>
+    <%= link_to search_path(params[:search]),
+      class: "btn btn-default btn-block" do %>
+      <%= t "livesearch.no_result", name: params[:search] %>
+    <% end %>
+  </li>
+<% else %>
+  <div class="scrollable-menu width400">
+    <% items.each do |item| %>
+      <% if item.is_a? Product %>
+        <%= render "products/live_search_item", product: item %>
+      <% elsif item.is_a? Shop %>
+        <%= render "shops/live_search_item", shop: item %>
+      <% end %>
+    <% end %>
+  </div>
+  <li class="divider"></li>
+  <li>
+    <%= link_to search_path(params[:search]),
+      class: "btn btn-default btn-block" do %>
+      <%= t "livesearch.see_more", num: items.size,
+        name: params[:search] %>
+    <% end %>
+  </li>
+<% end %>

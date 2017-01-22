@@ -1,0 +1,28 @@
+<div class="row">
+  <h1 class="text-center title"><%= t "request_shop.manage_shop" %></h1>
+  <div class="col-md-12">
+    <div class="panel panel-success">
+      <div class="btn_view_all_wrapper pull-right">
+        <%= link_to t("common.btn_request"),
+          new_domain_dashboard_shop_path(domain_id: @domain.id),
+          class: "btn btn_view_all btn-warning" %>
+      </div>
+      <table class="table table-striped table-hover table-bordered">
+        <thead class="">
+          <tr>
+            <th><%= t "admin.shops.index.name" %></th>
+            <th><%= t "admin.shops.index.avatar" %></th>
+            <th><%= t "admin.shops.index.description" %></th>
+            <th><%= t "products" %></th>
+            <th><%= t "admin.shops.index.status" %></th>
+            <th class="text-center"><%= t "admin.shops.index.actions" %></th>
+          </tr>
+        </thead>
+        <tbody>
+          <%= render @shops %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+<%= paginate @shops %>

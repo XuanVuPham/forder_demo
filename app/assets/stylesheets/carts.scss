@@ -1,0 +1,135 @@
+$orange_main: #ff5722;
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+.btn-action {
+  a {
+    margin-right: 5px;
+    margin-left: 5px;
+    width: 40px;
+    text-align: center;
+  }
+}
+
+ul.dropdown-cart{
+  min-width: 395px;
+}
+ul.dropdown-cart li .item{
+  width: 400px;
+  height: auto;
+}
+ul.dropdown-cart li .item{
+  display:block;
+  padding:3px 10px;
+  margin: 3px 0;
+}
+ul.dropdown-cart li .item:hover{
+  background-color:#f3f3f3;
+}
+ul.dropdown-cart li .item:after{
+  visibility: hidden;
+  display: block;
+  font-size: 0;
+  content: " ";
+  clear: both;
+  height: 0;
+}
+
+ul.dropdown-cart .cart-item li + li {
+  border-top: 1px solid #ccc;
+}
+
+ul.dropdown-cart li .item-left{
+  display: block;
+}
+ul.dropdown-cart li .item-left img {
+  display: inline-block;
+  margin-right: 10px;
+}
+ul.dropdown-cart li .item-left span.item-info{
+  float:left;
+}
+ul.dropdown-cart li .item-left span.item-info{
+  margin-left:10px;
+}
+ul.dropdown-cart li .item-left span.item-info span{
+  display:block;
+}
+ul.dropdown-cart li .item-right{
+  float:right;
+}
+ul.dropdown-cart li .item-right button{
+  margin-top:14px;
+}
+
+.style_image {
+  border: 1px solid #000;
+}
+.page-content{
+  margin-bottom: 100px;
+}
+.btn_add_to_cart{
+  margin-bottom: 10px;
+}
+
+.caption {
+  height: 80px !important;
+}
+.image-product{
+  width: 100px;
+  height: 100px
+}
+
+.scrollbar
+{
+  margin-left: 30px;
+  float: left;
+  height: 300px;
+  width: 320px;
+  background: #F5F5F5;
+  overflow-y: scroll;
+  margin-bottom: 25px;
+}
+.action-padding {
+  padding: 0 5px;
+}
+.padding-top-20 {
+  padding-top: 20px;
+}
+.margin_top_cart {
+  margin-top:10px !important;
+}
+
+.h3_cart {
+  font-size: 20px;
+  margin-top: 0px;
+  margin-right: 42px;
+}
+
+.margin_cart {
+  margin-left: 42px;
+  margin-top: -25px;
+}
+
+.imagewh {
+  width: 250px;
+  height: 200px;
+}
+
+.cart_view {
+  width: 248px !important;
+  height: 140px !important;
+}
+
+.cart-item-default {
+  margin-bottom: 5px;
+  border-top: 1px solid #ccc;
+}
+
+.total_pay {
+  margin-top: 34px;
+  font-size: 21px;
+  margin-right: 25px;
+  color: #ff5722;
+  background: #e2e1e0;
+}

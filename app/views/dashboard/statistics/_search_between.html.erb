@@ -1,0 +1,31 @@
+<div class="search_between">
+  <div class="row">
+    <%= form_tag dashboard_statistics_path, method: :get, remote: true do %>
+      <%= render "shop", params_shop: :shop_id %>
+      <div class="col-md-1">
+        <%= label_tag :start_date, t(".start_date"), class: "text-info" %>
+      </div>
+      <div class="col-md-2">
+        <%= text_field_tag :start_date, params[:start_date],
+          data: {date_format: Settings.date_format},
+          class: "form-control datetimepicker",
+          placeholder: Settings.date_format %>
+      </div>
+      <div class="col-md-1">
+        <%= label_tag :end_date, t(".end_date"), class: "text-info" %>
+      </div>
+      <div class="col-md-2">
+        <%= text_field_tag :end_date, params[:end_date],
+          data: {date_format: Settings.date_format},
+          class: "form-control datetimepicker",
+          placeholder: Settings.date_format %>
+      </div>
+      <%= hidden_field_tag :current_shop_id, params[:current_shop_id] %>
+      <%= hidden_field_tag :category_statistic, params[:category_statistic] %>
+      <div class="col-md-2">
+        <%= submit_tag t(".btn_search"), class: "btn btn-primary" %>
+      </div>
+    <% end %>
+  </div>
+</div>
+<script src="<%= asset_path('dashboard/statistics.coffee') %>"></script>

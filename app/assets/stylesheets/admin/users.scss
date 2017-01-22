@@ -1,0 +1,20 @@
+// Place all the styles related to the admin/users controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.user_avatar {
+  span {
+    display: none;
+  }
+  &:hover>span {
+    display: block;
+  }
+}
+
+.btn-create-user {
+  display: block;
+  width: 12% !important;
+  float: right;
+  margin-right: 15px;
+  margin-bottom: 5px !important;
+  z-index: 1200;
+}

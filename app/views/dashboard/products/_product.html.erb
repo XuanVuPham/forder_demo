@@ -1,0 +1,56 @@
+<tr>
+  <td>
+    <% if @domain.present? %>
+      <%= link_to domain_product_path(@domain, product) do %>
+        <div class="shop-product-image">
+          <%= image_tag product.image.url %>
+        </div><br>
+        <h5 class="time-output"><strong>
+          <%= t "cart.order_time_text" %>
+          <%= l product.start_hour, format: :short_time %>
+          <%= t "split" %>
+          <%= l product.end_hour, format: :short_time %>
+        </strong></h5>
+      <% end %>
+    <% else %>
+      <%= link_to product_path(domain_id: Settings.not_find) do %>
+        <div class="shop-product-image">
+          <%= image_tag product.image.url %>
+        </div><br>
+        <h5 class="time-output"><strong>
+          <%= t "cart.order_time_text" %>
+          <%= l product.start_hour, format: :short_time %>
+          <%= t "split" %>
+          <%= l product.end_hour, format: :short_time %>
+        </strong></h5>
+      <% end %>
+    <% end %>
+  </td>
+  <td><%= product.name %></td>
+  <td>
+    <div class="truncate">
+      <%= product.description %>
+    </div>
+  </td>
+  <td><%= product.price %></td>
+  <td><%= product.status %></td>
+  <td>
+    <% if @domain.present? %>
+      <%= link_to t("common.edit_button"),
+         edit_domain_dashboard_shop_product_path(@domain, product.shop, product),
+        class: "btn btn-sm btn-primary" %>
+      <%= link_to t("common.delete_button"),
+        dashboard_shop_product_path(product.shop, product, domain_id: @domain.id),
+        method: :delete, data: {confirm: t("common.delete_confirm")},
+        class: "btn btn-sm btn-danger" %>
+    <% else %>
+      <%= link_to t("common.edit_button"),
+        edit_dashboard_shop_product_path(product.shop, product, domain_id: Settings.not_find),
+        class: "btn btn-sm btn-primary" %>
+      <%= link_to t("common.delete_button"),
+        dashboard_shop_product_path(product.shop, product, domain_id: Settings.not_find),
+        method: :delete, data: {confirm: t("common.delete_confirm")},
+        class: "btn btn-sm btn-danger" %>
+    <% end %>
+  </td>
+</tr>

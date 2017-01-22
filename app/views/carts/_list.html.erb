@@ -1,0 +1,85 @@
+<div class="cart-item-show">
+  <% @cart_group.each do |cart| %>
+    <div class="panel-body">
+      <div class="col-md-12">
+        <% cart[:items].each do |item| %>
+          <div class="col-md-3">
+            <%= image_tag item.product.image.url, class: "image-shop cart_view" %>
+            <h4 class="media-heading margin_top_cart">
+              <%= item.product.name %>
+            </h4>
+            <div class="media">
+              <div class="media-body">
+                <span class="text-success">
+                  <strong><%= t "products.status" %></strong></span>
+                <span class="text-success"><strong></strong></span>
+              </div>
+            </div>
+            <table class="table table-hover">
+              <thead>
+                <tr>
+                  <th><%= t "cart.quantity" %></th>
+                  <th class="text-center"><%= t "cart.price" %></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="col-sm-2 col-md-2">
+                    <%= item.quantity %>
+                  </td>
+                  <td class="col-sm-3 col-md-3 text-center">
+                    <strong><%= format_price item.total_price %></strong></td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td>
+                    <span class="item-right">
+                      <%= link_to cart_path(item.product_id), method: :delete,
+                        remote: true, class: "pull-right" do %>
+                        <span class="glyphicon glyphicon-trash text-danger
+                          action-padding"></span>
+                      <% end %>
+                    </span>
+                    <%= link_to edit_cart_path(item.product_id), remote: true,
+                      class: "pull-right" do %>
+                      <span class="glyphicon glyphicon-minus-sign
+                        text-primary action-padding"></span>
+                    <% end %>
+                    <%= link_to cart_path(item.product_id), remote: true,
+                      method: :put, class: "pull-right" do %>
+                      <span class="glyphicon glyphicon-plus-sign text-success
+                        action-padding"></span>
+                    <% end %>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        <% end %>
+      </div>
+      <div class="row">
+        <hr>
+        <div class="pull-right">
+          <h3 class="total-cart text-success h3_cart defaut-top">
+            <b><%= t "dashboard.products.show.total" %>:</b> <%= format_price detail_price cart[:items]%>
+          </h3>
+        </div>
+        <div class="defaut-top">
+          <% if cart.present? %>
+            <% if @domain.present? %>
+              <%= link_to t("oder.btn_oder"), new_domain_order_path(@domain, shop_id: cart[:shop_id]),
+                class: "btn btn-primary" %>
+            <% else %>
+              <%= link_to t("oder.btn_oder"), new_order_path(shop_id: cart[:shop_id]), class: "btn btn-primary" %>
+            <% end %>
+          <% end %>
+        </div>
+        <hr>
+      </div>
+    </div>
+  <% end %>
+  <% if @cart.blank? %>
+    <h4><%= t "cart.view_product" %></h4>
+    <%= link_to t("cart.btn_view_product"), products_path, class: "btn btn-primary" %>
+  <% end %>
+</div>

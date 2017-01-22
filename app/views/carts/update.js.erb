@@ -1,0 +1,4 @@
+$('.cart-item-show').replaceWith('<%= j render( partial: "carts/list") %>');
+$('.cart-item').replaceWith('<%= j render(partial: "shared/cart") %>');
+$('.items-count').text('<%= @cart.count %>');
+$.growl.notice({ message: '<%= t "add_cart_succes" %>'});

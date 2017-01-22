@@ -1,0 +1,35 @@
+<%= simple_form_for [:dashboard, @shop] do |f| %>
+  <%= render "shared/error_messages", object: @shop %>
+  <div class="form-group">
+    <%= f.label t "request_shop.shop_name" %>
+    <%= f.text_field :name, placeholder: t(".shop_name"),
+      error: t(".shop_name_error") , class: "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= f.label t "description" %>
+    <%= f.text_area :description, placeholder: t(".shop_description"),
+      error: t(".shop_description_error"), class: "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= f.label t "time_auto_reject_order" %>
+    <%= f.time_select :time_auto_reject, minute_step: Settings.minute_step %>
+  </div>
+  <div class="form-group">
+    <%= f.label t "owners_shop_avatar" %>
+    <%= image_tag @shop.avatar.url, class: "avatar padding_top_10px defaut-size" %>
+    <%= f.file_field :avatar, accept: Settings.pictures.accepted_files,
+      class: "upload_img" %>
+  </div>
+  <div class="form-group">
+    <%= f.label t "owners_shop_cover_image" %>
+    <%= image_tag @shop.cover_image.url, class: "avatar_cover padding_top_10px defaut-cover-size" %>
+    <%= f.file_field :cover_image, accept: Settings.pictures.accepted_files,
+      class: "upload_img_cover" %>
+  </div>
+  <% if @domain.present? %>
+    <%= f.hidden_field :domain_id, value: @domain.id %>
+  <% end %>
+  <%= link_to t("common.back_button"), :back, class: "btn btn-warning" %>
+  <%= f.submit yield(:submit_button),
+    class: "btn btn-primary space-top-submit" %>
+<% end %>

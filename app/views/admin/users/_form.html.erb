@@ -1,0 +1,34 @@
+<%= form_for [:admin, @user] do |f| %>
+  <div class="form-group">
+    <%= f.label :name %>
+    <%= f.text_field :name, class: "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= f.label :email %>
+    <%= f.text_field :email, class: "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= f.label :chatwork_id %>
+    <%= f.text_field :chatwork_id, class: "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= f.label :description %>
+    <%= f.text_area :description, class: "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= f.label :avatar %>
+    <%= f.file_field :avatar, accept: Settings.pictures.accepted_files %>
+  </div>
+  <div class="row">
+    <div class="col-md-4 search-user-image">
+      <%= image_tag @user.avatar.url, class: "thumbnail" %>
+    </div>
+    <div class="col-md-4 text-center">
+      <%= link_to t("common.back_button"), :back,
+        class: "btn btn-warning" %>
+    </div>
+    <div class="col-md-4 text-center">
+      <%= f.submit yield(:submit_button), class: "btn btn-primary" %>
+    </div>
+  </div>
+<% end %>

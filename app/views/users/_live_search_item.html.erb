@@ -1,0 +1,48 @@
+<li class="user-search-item">
+  <div class="row">
+    <div class="col-md-2 col-offset-1">
+      <span class="search-user-image">
+        <%= image_tag user.avatar.url %>
+      </span>
+    </div>
+    <div class="col-md-9">
+      <div class="row">
+        <h4><%= link_to user.name, user %></h4>
+      </div>
+      <div class="row">
+        <% if @managers.include? user %>
+          <div class="col-md-10">
+            <span class="label label-success">
+              <%= t "livesearch.added" %>
+            </span>
+          </div>
+          <div class="col-md-2">
+            <% if @shop.is_owner? user %>
+              <span class="label label-info">
+                <%= t "livesearch.owner" %>
+              </span>
+            <% else %>
+              <%= link_to t("livesearch.remove"),
+                dashboard_shop_shop_manager_path(@shop,
+                  @shop.get_shop_manager_by(user)),
+                method: :delete, data: {confirm: t("common.delete_confirm")},
+                class: "btn btn-sm btn-danger" %>
+            <% end %>
+          </div>
+        <% else %>
+          <div class="col-md-10">
+            <span class="label label-warning">
+              <%= t "livesearch.new" %>
+            </span>
+          </div>
+          <div class="col-md-2">
+            <%= link_to t("livesearch.add"),
+              dashboard_shop_shop_managers_path(shop_manager: {user_id: user.id}),
+              method: :post, class: "btn btn-sm btn-info" %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+    <div class="clearfix"></div>
+  </div>
+</li>

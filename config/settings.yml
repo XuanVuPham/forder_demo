@@ -1,0 +1,75 @@
+common:
+  per_page: 6
+  products_per_page: 12
+orders:
+  status: {open: "open", deliver: "deliver", close: "close"}
+pictures:
+  upload_dir: "uploads"
+  accepted_files: "image/jpeg, image/gif, image/png"
+  max_size: 5
+  avatar_size: "128"
+  avatar_small_size: "24"
+mailer:
+  default_mail: "no-reply@fdf-12.herokuapp.com"
+  sent_mail: "forder.info@gmail.com"
+index:
+  max_shops: 6
+  max_products: 8
+comment:
+  num_posts: 2
+date_format: "YYYY/MM/DD"
+search:
+  min_results: 5
+admin:
+  dashboard:
+    max_items: 10
+rate: "rate"
+notification:
+  number_unread_not_display: 0
+delay_check_order: 1
+max_content_scroll: 3
+count_tag: 0
+order_increase: 1
+minute_constant: 60
+minute_step: 5
+filter_status_order:
+  pending: "pending"
+  accepted: "accepted"
+  done: "done"
+  rejected: "rejected"
+  all: "all"
+check_order: 2
+start_count_order: 0
+row_header: 1
+row_user_start: 2
+start_count: 0
+user_increase: 1
+increase_one: 1
+not_find: "not_find"
+add_shop: "add_shop"
+edit_shop: "edit_shop"
+active: "active"
+blocked: "blocked"
+waiting: "waiting"
+pending: "pending"
+new: "new"
+languages:
+  vietnamese: {name: "Tiếng Việt", image: "vi.png", type: "vi"}
+  english: {name: "English", image: "en.png", type: "en"}
+  japanese: {name: "日本語", image: "ja.png", type: "ja"}
+image_url:
+  cart: "cart.png"
+  systemdone: "systemaccepted.jpg"
+notification_new: "new"
+file_xls: ".xls"
+file_xlsx: ".xlsx"
+xls: "xls"
+xlsx: "xlsx"
+min_product_in_category: 0
+request_status:
+  pending: "pending"
+  approved: "approved"
+  rejected: "rejected"
+domain:
+  professed: "glyphicon glyphicon-globe"
+  secret: "glyphicon glyphicon-lock"

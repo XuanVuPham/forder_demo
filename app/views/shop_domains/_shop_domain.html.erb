@@ -1,0 +1,22 @@
+<tr>
+  <td><%= shop_domain.id %></td>
+  <td>
+    <%= shop_domain.shop.name %>
+  </td>
+  <td>
+    <% shop_domain.shop.users.each do |user| %>
+      <%= user.name %><br>
+    <% end %>
+  </td>
+  <td><%= shop_domain.shop.products.size %></td>
+  <td class="text-center">
+    <strong>
+      <%= link_to t("accept"),
+        shop_domain_path(shop_domain, status: :approved), method: :put %>
+    </strong><br>
+    <strong>
+      <%= link_to t("delete"),
+        shop_domain_path(shop_domain, status: :rejected), method: :put %>
+    </strong>
+  </td>
+</tr>

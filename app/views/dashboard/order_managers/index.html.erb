@@ -1,0 +1,72 @@
+<div class="container">
+  <h2 class="order_manager"><%= t ".title" %></h2>
+  <div class="panel panel-default">
+    <div class="search_between panel_search">
+      <div class="row">
+        <%= form_tag dashboard_shop_order_managers_path, method: :get do |f| %>
+          <div class="col-md-1 margin my-margin">
+            <span class="label-span">
+              <%= t(".start_date") %>
+            </span>
+          </div>
+          <div class="col-md-2">
+            <%= text_field_tag :start_date, params[:start_date],
+              class: "form-control datepicker",
+              placeholder: t("time.formats.date_format") %>
+          </div>
+          <div class="col-md-1 margin my-margin">
+            <span class="label-span">
+            <%= t(".end_date") %>
+            </span>
+          </div>
+          <div class="col-md-2">
+            <%= text_field_tag :end_date, params[:end_date],
+              class: "form-control datepicker",
+              placeholder: t("time.formats.date_format") %>
+          </div>
+          <div class="col-md-2">
+              <%= submit_tag t(".btn_search"), class: "btn btn-primary" %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  <br>
+  <ul class="nav nav-tabs">
+    <li class="active">
+      <a data-toggle="tab" href="#done"><%= t ".done_orders" %></a>
+    </li>
+    <li>
+      <a data-toggle="tab" href="#reject"><%= t ".reject_orders" %></a>
+    </li>
+  </ul>
+  <div class="tab-content">
+    <div id="done" class="tab-pane fade in active">
+      <div class="well">
+        <div class="panel-group">
+          <% if @order_products_done.present? %>
+            <%= render "order_product", order_products: @order_products_done %>
+          <% else %>
+            <span class="text-danger"><%= t ".not_products" %></span>
+          <% end %>
+          <p>
+            <%= t("download") %>
+            <%= link_to t("csv"), dashboard_shop_order_managers_path(@shop.id, format: "csv") %> |
+            <%= link_to t("excel"), dashboard_shop_order_managers_path(@shop.id, format: "xls") %>
+          </p>
+        </div>
+      </div>
+    </div>
+    <div id="reject" class="tab-pane fade">
+      <div class="well">
+        <div class="panel-group">
+          <% if @order_products_reject.present? %>
+            <%= render "order_product", order_products: @order_products_reject %>
+          <% else %>
+            <span class="text-danger"><%= t ".not_products" %></span>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

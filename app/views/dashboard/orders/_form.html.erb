@@ -1,0 +1,13 @@
+<%= form_for [:dashboard, :shop, @order] do |f| %>
+  <div class="row">
+    <div class="col-md-1">
+      <label><%= t".note" %></label>
+    </div>
+    <div class="col-md-9">
+      <%= f.text_area :notes, class: "form-control" %>
+    </div>
+    <div class="col-md-2 text-center">
+      <%= f.submit t("submit"), class: "btn btn-primary" %>
+    </div>
+  </div>
+<% end %>

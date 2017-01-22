@@ -1,0 +1,23 @@
+<% @events.each do |event| %>
+  <div class="notification-body">
+    <span role="presentation" class="">
+        <%= link_to event.get_link_redirect do %>
+          <div class="row <%= bg_unread event %> mark-read" data-id="<%= event.id %>">
+            <div class="col-md-3">
+                <span class="item-left product-thumbnail">
+                  <%= image_tag event.get_link_img %>
+                </span>
+            </div>
+            <div class="col-md-9 message-notification padding-left-0">
+              <span class="text-center margin_left_a">
+                <strong><%= link_to event.load_message,
+                  event.get_link_redirect %></strong><br>
+                <p class="text-left" ><%= link_to event.load_message_time,
+                  event.get_link_redirect %></p>
+              </span>
+            </div>
+          </div>
+        <% end %>
+    </span>
+  </div>
+<% end %>

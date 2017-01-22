@@ -1,0 +1,87 @@
+// Place all the styles related to the comments controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+//colors
+$color_pink_swan_approx: #bbb;
+$color_romance_approx: #fdfdfd;
+$color_tundora_approx: #444;
+$color_silver_chalice_approx: #aaa;
+
+//fonts
+$font_0: verdana;
+
+@import url(//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css);
+.detailBox {
+  width: 100%;
+  border: 1px solid $color_pink_swan_approx;
+}
+.titleBox {
+  background-color: $color_romance_approx;
+  padding: 10px;
+  label {
+    color: $color_tundora_approx;
+    margin: 0;
+    display: inline-block;
+  }
+}
+.commentBox {
+  padding: 10px;
+  border-top: 1px dotted $color_pink_swan_approx;
+  .form-group {
+    &:first-child {
+      width: 80%;
+    }
+    &:nth-child(2) {
+      width: 18%;
+    }
+  }
+}
+.actionBox {
+  border-top: 1px dotted $color_pink_swan_approx;
+  padding: 10px;
+  .form-group {
+    &:first-child {
+      width: 80%;
+    }
+    &:nth-child(2) {
+      width: 18%;
+    }
+    * {
+      width: 100%;
+    }
+  }
+}
+.taskDescription {
+  margin-top: 10px 0;
+}
+.commentList {
+  padding: 0;
+  list-style: none;
+  max-height: 200px;
+  overflow: auto;
+  li {
+    margin: 0;
+    margin-top: 10px;
+    > div {
+      display: table-cell;
+    }
+  }
+}
+.commenterImage {
+  width: 30px;
+  margin-right: 5px;
+  height: 100%;
+  float: left;
+  img {
+    width: 100%;
+    border-radius: 50%;
+  }
+}
+.sub-text {
+  color: $color_silver_chalice_approx;
+  font-family: $font_0;
+}
+.commentText p {
+  margin: 0;
+}

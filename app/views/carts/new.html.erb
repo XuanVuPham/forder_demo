@@ -1,0 +1,40 @@
+<div class="fade in well">
+  <h3><%= t "price_message" %><%= format_price @cart_group_price %></h3>
+  <% if @count_exit_order == Settings.count_tag %>
+    <h3><%= @all_order_deleted %></h3>
+  <% else %>
+    <h3><%= @have_order_deleted %></h3>
+    <div class="container-fluid">
+      <% @products_deleted.each do |product| %>
+        <div class="col-sm-4 product_item_wrapper col-md-3 margin-top-5-bot-5">
+          <%= image_tag product.image.url, class: "imagewh" %>
+          <h4 class="media-heading margin_top_cart">
+            <%= product.name %>
+          </h4>
+          <div class="media">
+            <div class="media-body">
+              <span class="text-success">
+                <strong><%= t "products.status" %>: <%= t "deleted"  %></strong></span>
+              <span class="text-success"><strong></strong></span>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+  <% if @domain.present? %>
+    <%= link_to t("cancel"), domain_carts_path(@domain), method: :get, class: "list btn btn-primary btn-action"%>
+    <% if @all_order_deleted.empty? %>
+      <%= link_to t("continue"), domain_orders_path(@domain), method: :post, class: "btn btn_add_to_cart btn-add" %>
+    <% else %>
+      <%= link_to t("continue"), domain_carts_path(@domain), method: :post, class: "btn btn_add_to_cart btn-add" %>
+    <% end %>
+  <% else %>
+    <%= link_to t("cancel"), carts_path, method: :get, class: "list btn btn-primary btn-action"%>
+    <% if @all_order_deleted.empty? %>
+      <%= link_to t("continue"), orders_path, method: :post, class: "btn btn_add_to_cart btn-add"  %>
+    <% else %>
+      <%= link_to t("continue"), carts_path, method: :post, class: "btn btn_add_to_cart btn-add" %>
+    <% end %>
+  <% end %>
+</div>

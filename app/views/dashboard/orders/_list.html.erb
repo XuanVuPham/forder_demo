@@ -1,0 +1,25 @@
+<div class="panel-group done-action"
+  id="<%= order.id %>">
+  <div class="panel panel-default">
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <div class="order-status-<%= order.id %> orders">
+          <input type="hidden" value=<%= order.id %>>
+          <span id="status-<%= order.id %>" value="<%= order.status %>">
+            <%= status_order order %></span>
+          <span><b><%= order.user_name %></b></span>
+          <span class="pull-right"><%= l order.created_at, format: :short_date %></span>
+        </div>
+      </div>
+    </div>
+    <div class="panel-body orders-hidden" id="order-<%= order.id %>" >
+      <input type="hidden" value=<%= order.id %> >
+      <%= render "order_products", order_products: order.order_products %>
+      <div class="pull-right">
+        <h4>
+          <b><%= t ".total" %>: </b><%= order.total_price %> <%= t"cart.vnd" %>
+        </h4>
+      </div>
+    </div>
+  </div>
+</div>

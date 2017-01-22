@@ -1,0 +1,39 @@
+<div class="row">
+  <div class="col-md-12">
+    <div class="panel panel-success">
+      <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+          <%= form_tag new_user_domain_path(id: @domain.id), method: :post do %>
+            <div class="form-group">
+              <%= label_tag(:email, t("enter_user_email")) %>
+            </div>
+            <div class="form-group">
+              <%= email_field_tag :email, nil, class: "form-control"%>
+            </div>
+            <%= link_to t("done"), domains_path, class: "btn btn-warning" %>
+            <%= submit_tag  t("add"), class: "btn btn-primary space-top-submit" %>
+          <% end %>
+        </div>
+      </div>
+      <table class="table table-striped table-hover table-bordered">
+        <thead class="">
+          <tr>
+            <th><%= t "common.number" %></th>
+            <th><%= t ".name" %></th>
+            <th><%= t ".email" %></th>
+            <th><%= t ".chatwork" %></th>
+            <th><%= t ".avatar" %></th>
+            <th><%= t ".description" %></th>
+            <th><%= t ".actions" %></th>
+          </tr>
+        </thead>
+        <tbody>
+          <%= render @users %>
+        </tbody>
+      </table>
+    </div>
+    <div class="col-lg-12 text-center">
+      <%= paginate @users, theme: "twitter-bootstrap-3" %>
+    </div>
+  </div>
+</div>

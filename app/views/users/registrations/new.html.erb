@@ -1,0 +1,60 @@
+<% provide :title, t("devise.user.sign_up") %>
+<div class="devise">
+  <div class="row">
+    <h1 class="text-center title">Sign up</h1>
+  </div>
+
+  <div class="row">
+    <div class="col-lg-offset-3 col-lg-6 form-sign">
+      <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+        <%= devise_error_messages! %>
+
+        <div class="field">
+          <%= f.label :name %>
+          <%= f.text_field :name, class: "form-control" %>
+        </div>
+
+        <div class="field">
+          <%= f.label :email %><br />
+          <%= f.email_field :email, autofocus: true, class: "form-control" %>
+        </div>
+
+        <div class="field">
+          <%= f.label :password %>
+          <% if @minimum_password_length %>
+          <em>(<%= @minimum_password_length %> characters minimum)</em>
+          <% end %><br />
+          <%= f.password_field :password, autocomplete: "off",
+            class: "form-control" %>
+        </div>
+
+        <div class="field">
+          <%= f.label :password_confirmation %><br />
+          <%= f.password_field :password_confirmation, autocomplete: "off",
+            class: "form-control" %>
+        </div>
+
+        <div class="field">
+          <%= f.label :chatwork_id %>
+          <%= f.text_field :chatwork_id, class: "form-control" %>
+        </div>
+
+        <div class="field">
+          <%= f.label :description %>
+          <%= f.text_area :description, class: "form-control" %>
+        </div>
+
+        <div class="field">
+          <%= f.label :avatar %>
+          <%= f.file_field :avatar, accept: Settings.pictures.accepted_files %>
+        </div>
+        <div class="actions text-center margin-top-10">
+          <%= f.submit "Sign up", class: "btn btn-default btn-sign" %>
+        </div>
+      <% end %>
+      <div class="col-lg-12 margin-top-10">
+        <%= render "users/shared/links" %>
+      </div>
+    </div>
+  </div>
+</div>

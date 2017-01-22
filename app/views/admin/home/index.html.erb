@@ -1,0 +1,188 @@
+<% provide :title, t(".page_title") %>
+<div class="row">
+  <div class="col-md-3">
+    <div class="info-box">
+      <span class="info-box-icon bg-aqua"><i class="fa fa-users"></i></span>
+      <div class="info-box-content">
+        <span class="info-box-text"><%= User.name.pluralize %></span>
+        <span class="info-box-number"><%= User.count %></span>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-3">
+    <div class="info-box">
+      <span class="info-box-icon bg-green"><i class="fa fa-home"></i></span>
+      <div class="info-box-content">
+        <span class="info-box-text"><%= Shop.name.pluralize %></span>
+        <span class="info-box-number"><%= Shop.count %></span>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-3">
+    <div class="info-box">
+      <span class="info-box-icon bg-yellow"><i class="fa fa-shopping-bag"></i></span>
+      <div class="info-box-content">
+        <span class="info-box-text"><%= Product.name.pluralize %></span>
+        <span class="info-box-number"><%= Product.count %></span>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-3">
+    <div class="info-box">
+      <span class="info-box-icon bg-red"><i class="fa fa-wpforms"></i></span>
+      <div class="info-box-content">
+        <span class="info-box-text"><%= Order.name.pluralize %></span>
+        <span class="info-box-number"><%= Order.count %></span>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-4">
+    <div class="info-box bg-purple">
+      <span class="info-box-icon"><i class="fa fa-comments-o"></i></span>
+      <div class="info-box-content">
+        <span class="info-box-text"><%= Comment.name.pluralize %></span>
+        <span class="info-box-number"><%= Comment.count %></span>
+        <div class="progress">
+          <div class="progress-bar"></div>
+        </div>
+        <span class="progress-description">
+          <%= t ".updating" %>
+        </span>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <div class="info-box bg-teal">
+      <span class="info-box-icon"><i class="fa fa-tags"></i></span>
+      <div class="info-box-content">
+        <span class="info-box-text">
+          <%= t ".tags_text" %>
+        </span>
+        <span class="info-box-number">
+          <%= ActsAsTaggableOn::Tag.count %>
+        </span>
+        <div class="progress">
+          <div class="progress-bar"></div>
+        </div>
+        <span class="progress-description">
+          <%= t ".updating" %>
+        </span>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <div class="info-box bg-maroon">
+      <span class="info-box-icon"><i class="fa fa-archive"></i></span>
+      <div class="info-box-content">
+        <span class="info-box-text"><%= Category.name.pluralize %></span>
+        <span class="info-box-number"><%= Category.count %></span>
+        <div class="progress">
+          <div class="progress-bar"></div>
+        </div>
+        <span class="progress-description">
+          <%= t ".updating" %>
+        </span>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-4">
+    <div class="box box-info">
+      <div class="box-header with-border">
+        <h3 class="box-title"><%= t ".new_member" %></h3>
+        <div class="box-tools pull-right">
+          <span class="label label-info">
+            <%= t ".new_member_num", num: @users.count %>
+          </span>
+          <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+          </button>
+          <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i>
+          </button>
+        </div>
+      </div>
+      <div class="box-body no-padding">
+        <ul class="users-list clearfix">
+          <% @users.each do |user| %>
+            <li>
+              <%= image_tag user.avatar.url, class: "user-image admin-pic" %>
+              <%= link_to user.name, user, class: "users-list-name" %>
+              <span class="users-list-date">
+                <%= time_ago_in_words user.created_at %>
+              </span>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+      <div class="box-footer text-center">
+        <%= link_to t(".all_users"), admin_users_path, class: "uppercase" %>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <div class="box box-success">
+      <div class="box-header with-border">
+        <h3 class="box-title"><%= t ".new_shop" %></h3>
+        <div class="box-tools pull-right">
+          <span class="label label-success">
+            <%= t ".new_shop_num", num: @shops.count %>
+          </span>
+          <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+          </button>
+          <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i>
+          </button>
+        </div>
+      </div>
+      <div class="box-body no-padding">
+        <ul class="users-list clearfix">
+          <% @shops.each do |shop| %>
+            <li>
+              <%= image_tag shop.avatar.url, class: "user-image admin-pic" %>
+              <%= link_to shop.name, shop, class: "users-list-name" %>
+              <span class="users-list-date">
+                <%= time_ago_in_words shop.created_at %>
+              </span>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+      <div class="box-footer text-center">
+        <%= link_to t(".all_shops"), admin_shops_path, class: "uppercase" %>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <div class="box box-warning">
+      <div class="box-header with-border">
+        <h3 class="box-title"><%= t ".new_product" %></h3>
+        <div class="box-tools pull-right">
+          <span class="label label-warning">
+            <%= t ".new_product_num", num: @products.count %>
+          </span>
+          <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+          </button>
+          <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i>
+          </button>
+        </div>
+      </div>
+      <div class="box-body no-padding">
+        <ul class="users-list clearfix">
+          <% @products.each do |product| %>
+            <li>
+              <%= image_tag product.image.url, class: "user-image admin-pic" %>
+              <%= link_to product.name, product, class: "users-list-name" %>
+              <span class="users-list-date">
+                <%= time_ago_in_words product.created_at %>
+              </span>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+      <div class="box-footer text-center">
+        <%= link_to t(".all_products"), admin_products_path, class: "uppercase" %>
+      </div>
+    </div>
+  </div>
+</div>

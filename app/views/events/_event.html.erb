@@ -1,0 +1,19 @@
+<div class="event">
+  <div class="notification-body">
+    <li role="presentation">
+      <div class="row <%= bg_unread event %>">
+        <div class="col-md-3">
+          <%= link_to event.get_link_redirect do %>
+            <span class="item-left product-thumbnail">
+              <%= image_tag event.get_link_img %></span>
+          <% end %>
+        </div>
+        <div class="col-md-9 message-notification">
+          <span class="text-center">
+            <%= link_to event.load_message, event.get_link_redirect %>
+          </span>
+        </div>
+      </div>
+    </li>
+  </div>
+</div>

@@ -1,0 +1,311 @@
+<div class="home-header">
+  <nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <% if @domain.present? %>
+          <%= link_to domain_path(@domain), class: "navbar-brand" do %>
+            <%= image_tag "/assets/logo.png" %>
+          <% end %>
+        <% else %>
+          <a class="navbar-brand" href="/">
+            <img src="/assets/logo.png" alt="<%= t "common.base_title" %>">
+          </a>
+        <% end %>
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+          <span class="sr-only"><%= t "common.toggle_navigation" %></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+      </div>
+      <div class="collapse navbar-collapse" id="myNavbar">
+        <%= form_tag search_path, method: :get,
+          class: "search-form navbar-form navbar-left dropdown" do %>
+          <div class="form-group">
+            <%= text_field_tag :search, params[:search],
+              class: "form-control search dropdown-toggle",
+              placeholder: t("livesearch.search_placeholder"),
+              "data-toggle": "dropdown", "aria-hidden": :true,
+              autocomplete: :off, required: true, id: "live-search-form" %>
+            <ul class="dropdown-menu">
+              <div id="livesearch", class="width400"></div>
+              <div id="livesearch_loading"></div>
+            </ul>
+          </div>
+          <%= button_tag type: :submit, class: "btn btn-default" do %>
+            <i class="fa fa-search"></i>
+          <% end %>
+        <% end %>
+        <ul class="nav navbar-nav">
+          <% if user_signed_in? && current_user.domains.present? %>
+            <li class="dropdown">
+              <a href="#" data-toggle="dropdown"
+                class="dropdown-toggle">
+                <div>
+                  <i class="<%= domain_icon @domain %>"></i>
+                  <span class="user-title"><%= @domain.name %>
+                    <b class="caret"></b>
+                  </span>
+                </div>
+              </a>
+              <ul class="dropdown-menu">
+                <% current_user.domains.each do |domain| %>
+                  <% unless domain == @domain %>
+                    <li>
+                      <%= link_to domain_path(domain) do %> 
+                        <i class="<%= domain_icon domain %>"></i>
+                        <span><%= domain.name %></span>
+                      <% end %>
+                    </li>
+                    <li role="separator" class="divider"></li>
+                  <% end %>
+                <% end %>
+              </ul>
+            </li>
+          <% end %>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown"
+              role="button" aria-expanded="false">
+              <span class="glyphicon glyphicon-shopping-cart"></span>
+              <span class="items-count"><%= @cart.count %></span>
+              <span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu min-width-cart" role="menu">
+              <%= render "shared/cart" %>
+              <li class="divider"></li>
+              <li>
+                <% if @domain.present? %>
+                  <%= link_to t("cart.view_cart_all"), domain_carts_path(@domain), class: "text-center hightline" %>
+                <% else %>
+                  <%= link_to t("cart.view_cart_all"), carts_path, class: "text-center hightline" %>
+                <% end %>
+              </li>
+            </ul>
+          </li>
+          <li class="navbar-orders">
+            <% if @domain.present? %>
+              <%= link_to domain_orders_path(@domain) do %>
+                <i class="fa fa-list-ol"></i>
+                <span><%= t "common.your_orders" %></span>
+              <% end %>
+            <% else %>
+              <%= link_to orders_path() do %>
+                <i class="fa fa-list-ol"></i>
+                <span><%= t "common.your_orders" %></span>
+              <% end %>
+            <% end %>
+          </li>
+          <li class="block-notification-dropdown dropdown event ">
+            <a href="#" id="notifications-dropdown" class="dropdown-toggle"
+              data-toggle="dropdown">
+              <div>
+                <div class="icon-notification">
+                  <i class="fa fa-bell fa-lg"></i>
+                  <% if user_signed_in? %>
+                    <span class="items-count-noti">
+                      <%= render "events/counter", counter: count_notification_unread %>
+                    </span>
+                  <% end %>
+                </div>
+              </div>
+            </a>
+            </br>
+            <ul class="dropdown-menu dropdown-noti width_dropdown for-notifi" role="menu"
+              aria-labelledby="notifications-dropdown">
+              <div class="dropdown-notification">
+                <li class="header clearfix">
+                  <h4 class="title">
+                    <span><%= t "common.notifications" %></span>
+                  </h4>
+                  <h6><%= link_to t("notification.read_all"), read_all_events_path,
+                    method: :post, remote: true, class: "pull-right read-all" %></h6>
+                </li>
+                <% if user_signed_in? %>
+                  <div id="events">
+                    <%= render "events/list_events" %>
+                  </div>
+                  <% else %>
+                    <li>
+                      <p class="no-notification">
+                        <span><%= t "common.no_notifications" %></span>
+                      </p>
+                    </li>
+                <% end %>
+              </div>
+              <li class="divider"></li>
+              <li>
+                <%= link_to t("cart.view_cart_all"),events_path ,
+                  class: "text-center hightline" %>
+              </li>
+            </ul>
+          </li>
+          <% if user_signed_in? %>
+            <li class="navbar-user dropdown">
+              <a href="#" id="basic-nav-dropdown" data-toggle="dropdown"
+                class="dropdown-toggle" role="button">
+                <div>
+                  <span class="user-avatar">
+                    <%= image_tag current_user.avatar.url %>
+                  </span>
+                  <span class="user-title"><%= current_user.name %>
+                    <b class="caret"></b>
+                  </span>
+                </div>
+              </a>
+              <ul class="dropdown-menu" role="menu"
+                aria-labelledby="basic-nav-dropdown">
+                <li role="presentation" class="">
+                  <% if @domain.present? %>
+                    <%= link_to user_path(current_user, domain_id: @domain.id) do %>
+                      <i class="fa fa-user"></i>
+                      <span><%= t "header.account" %></span>
+                    <% end %>
+                  <% else %>
+                    <%= link_to user_path(current_user, domain_id: Settings.not_find) do %>
+                      <i class="fa fa-user"></i>
+                      <span><%= t "header.account" %></span>
+                    <% end %>
+                  <% end %>
+                </li>
+                <li role="separator" class="divider"></li>
+                <li role="separator" class="divider"></li>
+                <li role="presentation" class="">
+                  <% if @domain.present? %>
+                    <%= link_to domain_dashboard_shops_path(@domain) do %>
+                      <i class="glyphicon glyphicon-pencil"></i>
+                      <span><%= t "header.shop_manager" %></span>
+                    <% end %>
+                  <% else %>
+                    <%= link_to dashboard_shops_path(domain_id: Settings.not_find) do %>
+                      <i class="glyphicon glyphicon-pencil"></i>
+                      <span><%= t "header.shop_manager" %></span>
+                    <% end %>
+                  <% end %>
+                </li>
+                <li role="separator" class="divider"></li>
+                <li role="presentation" class="">
+                  <% if @domain.present? %>
+                    <%= link_to domains_path(domain_id: @domain.id) do %>
+                      <i class="fa fa-flag-o"></i>
+                      <span><%= t "domain" %></span>
+                    <% end %>
+                  <% else %>
+                    <%= link_to domains_path do %>
+                      <i class="fa fa-flag-o"></i>
+                      <span><%= t "domain" %></span>
+                    <% end %>
+                  <% end %>
+                </li>
+                <% if current_user.shops.any? %>
+                  <li role="separator" class="divider"></li>
+                  <li role="presentation" class="">
+                    <% if @domain.present? %>
+                      <%= link_to domain_dashboard_path(@domain) do %>
+                        <i class="fa fa-bar-chart"></i>
+                        <span><%= t "header.shop_statistic" %></span>
+                      <% end %>
+                    <% else %>
+                      <%= link_to dashboard_path() do %>
+                        <i class="fa fa-bar-chart"></i>
+                        <span><%= t "header.shop_statistic" %></span>
+                      <% end %>
+                    <% end %>
+                  </li>
+                <% end %>
+                <li role="separator" class="divider"></li>
+                <li role="presentation" class="">
+                  <a role="menuitem" href="#" tabindex="-1">
+                    <i class="fa fa-ticket"></i>
+                    <span><%= t "header.report_abuse" %></span>
+                  </a>
+                </li>
+                <li role="separator" class="divider"></li>
+                <li role="presentation" class="">
+                  <% if @domain.present? %>
+                    <%= link_to edit_user_registration_path(domain_id: @domain.id) do %>
+                      <i class="fa fa-cog"></i>
+                      <span><%= t "header.settings" %></span>
+                    <% end %>
+                  <% else %>
+                    <%= link_to edit_user_registration_path do %>
+                      <i class="fa fa-cog"></i>
+                      <span><%= t "header.settings" %></span>
+                    <% end %>
+                  <% end %>
+                </li>
+                <li role="presentation" class="">
+                  <%= link_to destroy_user_session_path, method: :delete do %>
+                    <i class="fa fa-sign-out"></i>
+                    <span><%= t "header.logout" %></span>
+                  <% end %>
+                </li>
+              </ul>
+            </li>
+          <% else %>
+            <li class="navbar-user dropdown">
+              <a href="#" id="basic-nav-dropdown" data-toggle="dropdown"
+                class="dropdown-toggle user-avatar" role="button">
+                <span class="glyphicon glyphicon-user"></span>
+                <b class="caret"></b>
+              </a>
+              <ul class="dropdown-menu" role="menu"
+                aria-labelledby="basic-nav-dropdown">
+                <li role="presentation" class="">
+                  <%= link_to new_user_session_path do %>
+                    <i class="fa fa-sign-in"></i>
+                    <span><%= t "header.sign_in" %></span>
+                  <% end %>
+                </li>
+                <!-- <li role="separator" class="divider"></li>
+                <li role="presentation" class="">
+                  <%= link_to user_facebook_omniauth_authorize_path do %>
+                    <i class="fa fa-facebook-official primarys"></i>
+                    <span><%= t "header.sign_in_fb" %></span>
+                  <% end %>
+                </li>
+                <li role="separator" class="divider"></li>
+                <li role="separator" class="divider"></li>
+                <li role="presentation" class="">
+                  <%= link_to new_user_registration_path do %>
+                    <i class="fa fa-plus-square"></i>
+                    <span><%= t "header.sign_up" %></span>
+                  <% end %>
+                </li> -->
+              </ul>
+            </li>
+          <% end %>
+          <li class="navbar-user dropdown">
+            <% if selected_lang.to_s == Settings.languages.vietnamese.type %>
+              <a href="#" id="basic-nav-dropdown" data-toggle="dropdown"
+                class="dropdown-toggle user-avatar" role="button">
+                <%= image_tag Settings.languages.vietnamese.image, class: "image-flag" %>
+                <b class="caret"></b>
+              </a>
+            <% elsif selected_lang.to_s == Settings.languages.japanese.type %>
+              <a href="#" id="basic-nav-dropdown" data-toggle="dropdown"
+                class="dropdown-toggle user-avatar" role="button">
+                <%= image_tag Settings.languages.japanese.image, class: "image-flag" %>
+                <b class="caret"></b>
+              </a>
+            <% else %>
+              <a href="#" id="basic-nav-dropdown" data-toggle="dropdown"
+                class="dropdown-toggle user-avatar" role="button">
+                <%= image_tag Settings.languages.english.image, class: "image-flag" %>
+                <b class="caret"></b>
+              </a>
+            <% end %>
+            <ul class="dropdown-menu languages select-default" role="menu"
+              aria-labelledby="basic-nav-dropdown" style="cursor:pointer">
+              <% Settings.languages.each do|key, value| %>
+                <li role="presentation" class="" data-lang="<%= value.type %>">
+                <%= image_tag value.image, class: "image-flag" %>
+                <p><%= value.name %></p> </li>
+                <div class="clearfix"></div>
+              <% end %>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</div>

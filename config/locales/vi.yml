@@ -1,0 +1,710 @@
+vi:
+  datetime:
+    distance_in_words:
+      about_x_hours:
+        one: khoảng 1 giờ
+        other: khoảng %{count} giờ
+      about_x_months:
+        one: khoảng 1 tháng
+        other: khoảng %{count} tháng
+      about_x_years:
+        one: khoảng 1 năm
+        other: khoảng %{count} năm
+      almost_x_years:
+        one: gần 1 năm
+        other: gần %{count} năm
+      half_a_minute: 30 giây
+      less_than_x_minutes:
+        one: chưa tới 1 phút
+        other: chưa tới %{count} phút
+      less_than_x_seconds:
+        one: chưa tới 1 giây
+        other: chưa tới %{count} giây
+      over_x_years:
+        one: hơn 1 năm
+        other: hơn %{count} năm
+      x_days:
+        one: 1 ngày
+        other: ! '%{count} ngày'
+      x_minutes:
+        one: 1 phút
+        other: ! '%{count} phút'
+      x_months:
+        one: 1 tháng
+        other: ! '%{count} tháng'
+      x_seconds:
+        one: 1 giây
+        other: ! '%{count} giây'
+  time:
+    formats:
+      short_date: "%m/%d/%Y"
+      short_time: "%H:%M"
+      date_format: "MM/DD/YYYY"
+  split: " -"
+  a_order: "Một đơn hàng"
+  order_deleted: "đã bị xóa"
+  order_of: "Đơn hàng của"
+  owners_shop_cover_image: "Ảnh bìa của shop:"
+  owners_shop_avatar: "Ảnh đại diện:"
+  shop_name_error : "Tên shop lỗi!"
+  time_auto_reject_order: "Thời gian tự động từ chối order: "
+  deleted_user_order_shop: "Tất cả sản phẩm đã bị xóa"
+  to_domain: "vào miền: "
+  errors_shop_order_products: "Đơn hàng phê duyệt lỗi!"
+  shop_order_products: "đã được phê duyệt"
+  user_order_products: "Bạn đã gửi đơn hàng thành công"
+  done_products: "sản phẩm đã đặt"
+  rejected_products: "sản phẩm đã từ chối"
+  join_domain: "Tham gia vào miền"
+  shop_request: "Bạn có một yêu cầu cửa hàng: "
+  owner_active_shop_request: "Bạn vừa thêm một cửa hàng: "
+  active_shop_request: "Một cửa hàng của bạn vừa được đồng ý: "
+  blocked_shop_request: "Yêu cầu cửa hàng vào miền của bạn vừa bị loại khỏi: "
+  add_shop_domain_success: "Thêm cửa hàng vào miền thành công"
+  can_not_load_shop: "Không tìm thấy cửa hàng"
+  continue: "Tiếp tục"
+  add_product_failed: "Không thể thêm sản phẩm vào miền này"
+  professed: "Công khai"
+  secret: "Bảo mật"
+  can_not_load_domain: "Không tìm thấy miền tương ứng"
+  something_failed: "Gặp vấn đề khi thêm cửa hàng và sản phẩm"
+  can_not_find_user: "Không tìm thấy người dùng"
+  can_not_add_account: "Không thể thêm tài khoản này vào miền"
+  not_find: "not_find"
+  public_domain: "Miền công khai"
+  domain: "Miền"
+  choose_domain: "Chọn miền"
+  save_domain_successfully: "Miền được lưu thành công"
+  save_domain_not_successfully: "Miền được lưu KHÔNG thành công"
+  delete_domain: "Xóa tài người dùng khỏi miền thành công"
+  add_domain: "Thêm người dùng vào miền thành công"
+  done: "Xong"
+  edit_member: "Danh sách thành viên"
+  edit_shop: "Cửa hàng"
+  members: "Thành viên"
+  shop: "Cửa hàng"
+  products: "Sản phẩm"
+  domain: "Miền"
+  admin: "Quản trị"
+  delete: "Xóa"
+  added: "Đã thêm"
+  enter_user_email: "Nhập email người dùng để thêm"
+  add: "Thêm"
+  new_domain: "Miền mới"
+  document: "Tài liệu sử dụng"
+  hdsd_url: "https://drive.google.com/file/d/0Bw0Y2BhwI-7xXzBFOU0tWjlQSjg/view"
+  feed_back: "Gởi phản hồi"
+  shop_owner: "Chủ cửa hàng: "
+  change_shop_owner: "Thay đổi người quản lí"
+  enter_email: "Nhập email của chủ cửa hàng mới"
+  change_shop: "Bạn vừa thay đổi quyền quản lí của cửa hàng"
+  cant_not_find_shop: "Không thể tìm thấy tài khoản với email này"
+  shop_subject: "Yêu cầu tạo cửa hàng mới"
+  shop_request_message: "Tài khoản của bạn vừa được tạo ở trạng thái chờ, bận
+    cần chờ admin kích hoạt để sử dụng"
+  account_info: "Thông tin tài khoản"
+  hello: "Xin chào,"
+  account_created: "Tài khoản của bạn ở ứng dụng Framgia order vừa được tạo"
+  you_can: "Bạn có thể sử dụng email và mật khẩu dưới đâu để đăng nhập"
+  email: "email: "
+  password: "password: "
+  failed_to_read_file: "Không thể đọc được file tài khoản"
+  import: "Thêm"
+  many_user: " tài khoản thêm không thành công và "
+  import_success: " tài khoản thêm thành công "
+  sent_order: "Gửi đơn hàng thành công"
+  price_message: "Tổng giá đơn hàng của bạn: "
+  all: "Tất cả: "
+  com-infor: "Copyright 2016 Framgia, Inc. All rights reserved."
+  com-email: "admin@framgia.com"
+  company: "Framgia Vietnam"
+  phone-num: "84-4-3795-5417"
+  home: "Trang chủ"
+  blog: "Blog"
+  about: "Chi tiết"
+  faq: "Faq"
+  contact: "Liên lạc"
+  com-add: "Tầng 13 tòa nhà Keangnam Landmark, Lô E6, Đường Phạm Hùng, Từ Liêm Nam, Hà Nội, Việt Nam"
+  com-detail: "Framgia Việt Nam là công ty 100% vốn đầu tư Nhật Bản, chuyên xây
+    dựng những ứng dụng trên điện thoại, game, các ứng dụng xã hội và các ứng
+    dụng trên nền Web."
+  about_label: "Về công ty Framgia Việt Nam"
+  home: "Trang chủ"
+  start: "Từ ngày"
+  end: "Đến ngày"
+  information: "Bạn cần được kích hoạt tài khoản trước khi làm bất cứ điều gì"
+  csv: "CSV"
+  excel: "Excel"
+  download: "Tải về: "
+  description: "Mô tả"
+  current_week: "Tuần hiện tại"
+  shop_accept: "Đơn hàng"
+  order_product: "Đơn hàng đã được xác nhận: "
+  order: "Đơn hàng"
+  btn_search: "Tìm kiếm"
+  deleted: "đã xóa"
+  shop_name: "Tên cửa hàng: "
+  cancel: "Hủy"
+  continue: "Tiếp tục"
+  choose_picture: "Bạn cần chọn một ảnh để đổi ảnh đại diện cho của hàng"
+  minutes: " (phút)"
+  time_auto_reject: "Thời gian hủy tự động: "
+  number_product: "Số lượng sản phẩm: "
+  change-avatar: "Lưu"
+  have_no_order: "Không tìm thấy kết quả nào!"
+  current_month: "Tháng hiện tại"
+  current_year: "Năm hiện tại"
+  add_cart_succes: "Cập nhật giỏ hàng thành công"
+  load_order: "Không tìm thấy đơn hàng!"
+  order_open_blank: "Không có đơn hàng nào đang mở!"
+  submit: "Xác nhận"
+  order_open_present: "Danh sách đơn hàng đang mở."
+  confirm: "Bạn chắc chứ?"
+  year: "Năm"
+  facebook: "Facebook"
+  google_oauth2: "Google"
+  add_order: "Thêm đơn hàng"
+  accept_all: "Xác nhận tất cả"
+  create_order: "Gửi đi"
+  common:
+    base_title: "Framgia Food And Drink Order"
+    admin_title: "Quản trị"
+    home: "Trang chủ"
+    number: "Numbers"
+    delete_confirm: "Bạn chắc chứ?"
+    top_products: "Sản phẩm nổi bật"
+    top_shops: "Cửa hàng nổi bật"
+    previous: "Trước đó"
+    next: "Kế tiếp"
+    btn_view_all: "Xem tất cả"
+    btn_order_now: "Đặt hàng ngay"
+    btn_add_to_favorite: "Thêm vào ưa thích"
+    toggle_navigation: "Toggle navigation"
+    your_orders: "Đơn hàng của bạn"
+    notifications: "Thông báo"
+    no_notifications: "Không có thông báo nào!"
+    owner_of: "chủ cửa hàng"
+    categories: "Phân loại"
+    category:
+      all: "Tất cả"
+      snack: "Đồ ăn nhanh"
+      drink: "Đồ uống"
+      rice: "Cơm"
+      bread: "Bánh mì"
+      service: "Dịch vụ"
+      others: "Khác"
+    back_button: "Quay lại"
+    submit_button: "Xác nhận"
+    create_button: "Tạo"
+    edit_button: "Sửa"
+    delete_button: "Xóa"
+    save_button: "Lưu thay đổi"
+    set_button: "Thiết lập"
+    btn_ok: "Đồng ý"
+    btn_cancel: "Bỏ qua"
+    delete_confirm: "Bạn chắc chứ?"
+    chania: "Chania"
+    btn_your_shops: "Cửa hàng của bạn"
+    btn_request: "Yêu cầu"
+    all_shops: "Tất cả cửa hàng"
+    all_products: "Tất cả sản phẩm"
+    product_number: "%{number} sản phẩm"
+    view_button: "Xem"
+    tags: "Thẻ"
+    shop_managers: "Quản lý"
+  header:
+    account: "Tài khoản"
+    shop_manager: "Quản lý cửa hàng"
+    order_manager: "Quản lý đặt hàng"
+    shop_statistic: "Shop statistics"
+    report_abuse: "Báo cáo(đang phát triển)"
+    settings: "Thiết lập"
+    logout: "Đăng xuất"
+    sign_in: "Đăng nhập"
+    sign_in_fb: "Đăng nhập với Facebook"
+    sign_up: "Đăng ký"
+  devise:
+    user:
+      sign_in: "Đăng nhập"
+      sign_up: "Đăng ký"
+      sign_out: "Đăng xuất"
+      update_info: "Cập nhật thông tin"
+      forgot_password: "Quên mật khẩu"
+  flash:
+    success_message: "Thành công!"
+    danger_message: "Thất bại!"
+    success:
+      create_order: "Đơn hàng được tạo thành công!"
+      update_order: "Đơn hàng cập nhật thành công!"
+      admin:
+        created_category: "Thêm thành công!"
+        updated_category: "Cập nhật thành công!"
+        deleted_category: "Xóa thành công!"
+        created_shop: "Yêu cầu tạo cửa hàng thành công!"
+        updated_user: "Cập nhật thành công!"
+        deleted_user: "Đã xóa người dùng!"
+        created_user: "Thêm thành công !"
+      dashboard:
+        create_product: "Sản phẩm đã được thêm!"
+        edit_product: "Sản phẩm cập nhật thành công!"
+        update_product: "Sản phẩm cập nhật thành công!"
+        updated_shop: "Lưu cửa hàng thành công"
+        delete_product: "Sản phẩm đã được xóa!"
+        create_request: "Yêu cầu đã được thêm!"
+    danger:
+      load_order: "Không thể tìm thấy đơn hàng. Vui lòng chọn lại! "
+      load_items: "Không tìm thấy sản phẩm"
+      create_domain: "Bạn phải tạo một miền"
+      admin:
+        created_category: "Tạo mới thất bại. Vui lòng thử lại!"
+        updated_category: "Cập nhật thất bại. Vui lòng thử lại!"
+        deleted_category: "Xóa thất bại!"
+        created_shop: "Yêu cầu tạo cửa hàng thất bại!"
+        updated_user: "Cập nhật thất bại!"
+        deleted_user: "Xóa không thành công!"
+        existing_users_shops: "Người dùng bạn xóa hiện tại đang chứa shops"
+      load_shop: "Không tìm thấy cửa hàng!"
+      dashboard:
+        create_product: "Tạo mới thất bại. Vui lòng thử lại!"
+        edit_product: "Có lỗi xảy ra trong quá trình thay đổi!"
+        update_product: "Lỗi: Cập nhật thất bại!"
+        updated_shop: "Lỗi: Cập nhật thất bại!"
+        delete_product: "Xóa không thành công!"
+        order_product: "Sản phẩm đã được đặt hàng"
+        add_product_failed: "Không thể thêm sản phẩm vào miền này"
+        create_request: "Yêu cầu thất bại!"
+    warning:
+      admin:
+        deleted_category: "Có sản phẩm bên trong. Không thể xóa!"
+  admin:
+    orders:
+      index:
+        page_title: "Quản lý đơn hàng"
+        title: "Danh sách đơn hàng"
+        shop_name: "Cửa hàng"
+        user_order: "Đơn hàng của khách"
+        notes: "Ghi chú"
+        status: "Trạng thái"
+        coupon_name: "Phiếu mua hàng"
+        end_at: "Kết thúc lúc"
+        created_at: "Tạo lúc"
+        view: "Xem"
+        close: "Đóng"
+    shop_requests:
+      index:
+        page_title: "Quản lý yêu cầu tạo cửa hàng"
+        title: "Danh sách yêu cầu"
+        name: "Tên cửa hàng"
+        owner: "Chủ cửa hàng"
+        description: "Mô tả"
+        status: "Trạng thái"
+        cover_image: "Ảnh bìa"
+        avatar: "Ảnh đại diện"
+        requested_at: "Yêu cầu lúc"
+        approve: "Chấp nhận"
+        reject: "Từ chối"
+        approve_confirm: "Bạn có cho phép %{user} mở cửa hàng %{shop} ?"
+        reject_confirm: "Bạn có từ chối %{user} mở cửa hàng %{shop} ?"
+        update_shop_request_success: "Cửa hàng %{shop} đang %{status}"
+        update_shop_request_failed: "Có lỗi xảy ra với %{shop} trạng thái %{status}"
+    categories:
+      index:
+        title: "Danh sách Thể loại"
+        heading: "Thể loại"
+        name: "Tên thể loại"
+        actions: "Hành động"
+        no_categories: "Không có thể loại nào"
+        delete_confirm: "Bạn có chắc chắn xóa không?"
+      new:
+        title: "Tạo mới"
+        category: "Thể loại"
+      edit:
+        title: "Chỉnh sửa"
+        category: "Thể loại"
+    users:
+      index:
+        title: "Tất cả người dùng"
+        name: "Tên"
+        email: "Email"
+        chatwork: "Chatwork id"
+        actions: "Hành động"
+        avatar: "Ảnh đại diện"
+        description: "Mô tả"
+        show_avatar: "Hiện ảnh"
+        wait: "Khóa"
+        active: "Kích hoạt"
+      edit:
+        title: "Chỉnh sửa"
+        user: "Thông tin người dùng"
+      form:
+        show_avatar: "Rê chuột vào để xem hình đại diện"
+    shops:
+      index:
+        title: "Tất cả cửa hàng"
+        name: "Tên cửa hàng"
+        owner: "Chủ cửa hàng"
+        description: "Mô tả"
+        status: "Trạng thái"
+        actions: "Hành động"
+        avatar: "Ảnh đại diện"
+    home:
+      index:
+        page_title: "Bảng điều khiển"
+        new_member_num: "%{num} thành viên mới"
+        new_member: "Thành viên gần đây nhất"
+        all_users: "Xem tất cả người dùng"
+        new_shop_num: "%{num} cửa hàng mới"
+        new_shop: "Những cửa hàng mới nhất"
+        all_shops: "Xem tất cả cửa hàng"
+        new_product_num: "%{num} sản phẩm mới"
+        new_product: "Sản phẩm mới nhất"
+        all_products: "Xem tất cả sản phẩm"
+        updating: "Đang cập  nhật..."
+        tags_text: "Tags"
+  draft:
+    description: "The atmosphere in Chania has a touch of Florence and Venice."
+    shop_desc: "NEM CHUA RÁN, BÁNH MỲ, MỲ TÔM , NÂU ĐÁ LẮC (MỖI ĐƠN TRÊN
+    50K- TẶNG NGAY 1 KEM TRÀNG TIỀN LẠNH OR FAMI LẠNH)"
+    user_name: "Hoàng Đức"
+    shop_name: "Ly Trish"
+  shops:
+    new:
+      create_shop: "Tạo cửa hàng mới"
+      submit_button: "Lưu"
+      title: "Gửi yêu cầu tạo cửa hàng mới"
+      shop: "Cửa hàng"
+    form:
+      shop_name: "Tên cửa hàng"
+      shop_description: "Mô tả"
+    show:
+      products: "Sản phẩm"
+      no_product: "Cửa hàng này chưa có sản phẩm nào"
+  pictures:
+    max_size_message: "Kích thước tối đa là %{max_size}MB. Vui lòng chọn tệp nhỏ hơn."
+    error_message: "Hình ảnh phải nhỏ hơn %{max_size}MB"
+  error_message_time: "Ngày bắt đầu và kết thúc không hợp lý!"
+  layouts:
+    admin_lte_2:
+      footer: "Framgia Orders. @2016@"
+    admin_lte_2_sidebar:
+      all: "Tất cả"
+      online: "Trực tuyến"
+      header: "Tất cả"
+      home: "Bảng điều khiển"
+      categories: "Thể loại"
+      all_categories: "Tất cả"
+      new_category: "Thêm mới"
+      orders: "Đơn hàng"
+      all_orders: "Tất cả"
+      shop_requests: "Yêu cầu tạo cửa hàng"
+      shops: "Cửa hàng"
+      users: "Người dùng"
+      all_users: "Tất cả"
+    admin_lte_2_header:
+      logo_mini: "F"
+      logo_medium: "Framgia"
+      logo_order: "Orders"
+      profile: "Trang cá nhân"
+      log_out: "Đăng xuất"
+      member_since: "Tham gia %{time}"
+    admin_lte_2_login:
+      login_box_message: "Đăng nhập để tạo phiên làm việc"
+  dashboard:
+    order_managers:
+      index:
+        start_date: "Ngày bắt đầu"
+        end_date: "Ngày kết thúc"
+    statistics:
+      index:
+        tittle: "Thống kê đơn hàng"
+      search_between:
+        btn_search: "Lọc"
+        start_date: "Ngày bắt đầu"
+        end_date: "Ngày kết thúc"
+      search_current:
+        btn_search: "Lọc"
+      shop:
+        shop: "Cửa hàng"
+    shops:
+      new:
+        create_shop: "Tạp cửa hàng mới"
+        submit_button: "Lưu"
+        title: "Yêu cầu tạo cửa hàng mới"
+        shop: "Cửa hàng"
+      form:
+        shop_name: "Tên cửa hàng"
+        shop_description: "Mô tả"
+
+      not_found: "Không tìm thấy cửa hàng"
+    products:
+      new:
+        title: "Thêm mới sản phẩm"
+        product: "Sản phẩm"
+      form:
+        product_description: "Mô tả"
+        product_name: "Tên"
+        product_price: "Giá"
+      edit:
+        title: "Chỉnh sửa"
+        product: "Sản phẩm"
+      not_found: "Không tìm thấy sản phẩm"
+      index:
+        empty_list: "Chưa có sản phẩm nào, vui lòng tạo mới"
+        new_button: "Tạo mới sản phẩm"
+        delete: “Xóa"
+      show:
+        name: "Tên"
+        quantity: "Số lượng"
+        price: "Giá"
+        total: "Tổng cộng"
+        product_name: "Sản phẩm: "
+    shops:
+      show:
+        edit: "Chỉnh sửa "
+        has_products: "Sản phẩm"
+        no_product: "Cửa hàng chưa có sản phẩm nào"
+        edit_all_time: "Cập nhật thời gian đặt hàng"
+        update_all: "Cập nhật tất cả"
+        update_success: "Cập nhật thành công"
+        update_faild: "Cập nhật thất bại"
+        start_time: "Băt đầu lúc: "
+        end_time: "Kết thúc lúc: "
+      products:
+        image: "Hình ảnh"
+        name: "Tên"
+        price: "Giá"
+        actions: "Hành động"
+        status : "Trạng thái"
+      new:
+        title: "Yêu cầu tạo cửa hàng"
+      edit:
+        title: "Chỉnh sửa cửa hàng"
+      form:
+        shop_name: "Tên"
+        shop_description: "Mô tả"
+    order:
+      title: "Danh sách đặt hàng"
+      id: "ID"
+      created_at: "Ngày"
+      user_name: "Người dùng"
+      total_pay: "Tổng cộng"
+      status: "Trạng thái"
+      confirm: "Xác nhận"
+      detail_order: "Chi tiết"
+      view_order_list: "Danh sách đặt hàng"
+      view_history_orders: "Lịch sử"
+      btn_search: "Tìm kiếm"
+      Date: "Ngày"
+      Name: "Tên"
+    shop_managers:
+      index:
+        title: "Quản lý tất cả"
+        name: "Tên người dùng"
+        email: "Email"
+        chatwork: "Chatwork id"
+        actions: "Hành động"
+        avatar: "Ảnh đại diện"
+        description: "Mô tả"
+        show_avatar: "Hiển thị ảnh đại diện"
+        blocked: "khóa"
+        active: "kích hoạt"
+    orders:
+      form:
+        end_date: "Ngày kết thúc"
+        note: "Ghi chú"
+        end_at_note: "Thiết lập thời gian tự động đóng đơn hàng"
+      index:
+        new_order: "tạo Đơn hàng"
+        end_date: "Ngày kết thúc"
+        note: "Ghi chú"
+        order: "Tạo đơn hàng"
+      orders_statistics:
+        not_products_accepted: "Chưa có sản phẩm nào được chấp nhận"
+    order_managers:
+      index:
+        title: "Quản lý đơn hàng"
+        done_orders: "Đơn hàng thành công"
+        reject_orders: "Đơn hàng bị từ chối"
+        not_products: "Không có sản phẩm nào"
+        btn_search: "Lọc"
+  cart:
+    view_cart_all: "Xem tất cả"
+    add_to_card: "Thêm"
+    quantity: "Số lượng"
+    price: "Đơn giá"
+    sub: "Bớt"
+    add: "Thêm"
+    delete: "Xóa"
+    vnd: " VND"
+    your_cart: "Giỏ hàng của bạn"
+    not_product: "Giỏ hàng trống. Vui lòng đặt hàng !"
+    view_product: "Xem sản phẩm tại đây "
+    btn_view_product: "Xem sản phẩm"
+    order_time_text: "Thời gian:"
+
+  status:
+    shops:
+      pending: "đang chờ"
+      active: "đã kích hoạt"
+      closed: "đã đóng"
+      rejected: "đã từ chối"
+      blocked: "đã khóa"
+  user_mailer:
+    shop_request:
+      subject: "Yêu cầu tạo cửa hàng: \"%{name}\""
+      hello: "Xin chào %{name},"
+      description: "Mô tả cửa hàng:"
+      status_message: "Bạn vừa gửi một yêu cầu tạo cửa hàng: \"%{shop_name}\""
+    shop_confirmation:
+      subject: "Trạng thái cửa hàng: \"%{name}\" vừa được thay đổi"
+      hello: "Dear %{name},"
+      status_message: "Your shop: \"%{shop_name}\" has been:"
+  admin_mailer:
+    shop_request:
+      subject: "New request for shop: \"%{name}\""
+      hello: "Xin chào %{name},"
+      description: "Mô tả cửa hàng:"
+      status_message: "Bạn vừa nhận được 1 yêu cầu tạo cửa hàng mới: \"%{shop_name}\""
+    shop_confirmation:
+      subject: "Trạng thái cửa hàng: \"%{name}\" vừa được thay đổi"
+      hello: "Xin chào %{name},"
+      status_message: "Bạn vừa thiết lập trạng thái cho \"%{shop_name}\":"
+  order_mailer:
+    subject: "Trạng thái đơn hàng"
+    title: "Xem trạng thái sản phẩm vừa được đặt hàng "
+  oder:
+    success: "Đặt hàng thành công !"
+    btn_oder: "Đặt đơn hàng này"
+    add-all: "Đặt tất cả"
+    id: "id"
+    category: "Thể loại"
+    name: "Tên"
+    image: "Hình ảnh"
+    quantity: "Số lượng"
+    price: "Đơn giá"
+    total: "Tổng cộng:"
+    btn_make_oder: "Tạo đơn hàng"
+    confirm: "Bạn chắc chứ ?"
+    not_oder: "Không có đơn hàng nào"
+    not_product_in_cart: "Không có sản phẩm nào trong giỏ hàng"
+    something_deleted: "Có một số sản phẩm của bạn đã bị xóa vì quá thời gian đặt"
+    continue: ", bạn có muốn tiếp tục không?"
+    allthing_deleted: "Tất cả sản phẩm của bạn đã bị xóa vì quá thời gian đặt"
+    has_order_deleted: "Có "
+    all_product_will_be_order: "Tất cả sản phẩm của bạn sẽ được gửi đi, bạn có muốn tiếp tục không?"
+    product_deleted: " sản phẩm của bạn bị xóa vì quá thời gian đặt, bạn có muốn tiếp tục không?"
+    status: "Trạng thái:"
+    btn_cancel_oder: "Hủy"
+    btn_confirm_oder: "Xác nhận đơn hàng"
+    deleted: "Xóa thành công"
+    not_delete: "Không xóa được"
+    create_order: "Tạo mới đơn hàng"
+  product:
+    name: "Tên sản phẩm"
+    price: "Đơn giá"
+    not_product: "Chưa có sản phẩm nào"
+  shared:
+    comments:
+      comment_box: "Khung bình luận"
+      can_comment_text: "BÌNH LUẬN BÊN DƯỚI"
+      cant_comment_text: "VUI LÒNG ĐĂNG NHẬP ĐỂ BÌNH LUẬN"
+      comment_placeholder_text: "Bình luận ở đây..."
+      comment_button: "Bình luận"
+  date_format: "%d/%m/%Y"
+  users:
+    show:
+      email: "Email"
+      chatwork: "Chatwork id"
+      create_at: "Tham gia ngày"
+      status: "Trạng thái"
+      send_mail: "Gửi thư"
+      description: "Mô tả"
+    shared:
+      links:
+        facebook: "Facebook"
+  livesearch:
+    see_more: "Xem tất cả %{num} kết quả cho \"%{name}\""
+    no_result: "Không có kết quả nào cho \"%{name}\""
+    shop_products: "%{number} sản phẩm"
+    search_placeholder: "Tìm kiếm cửa hàng và sản phẩm..."
+    shop_owner: "%{status} Cửa hàng - %{name}"
+    shop_owner_text: "Chủ:"
+    product_tags: "%{number} thẻ"
+    search_all: "Tất cả"
+    user_search_placeholder: "Nhập tài khoản hoặc email để thêm..."
+    added: "Đã thêm"
+    new: "Mới"
+    add: "Thêm"
+    remove: "Hủy"
+    owner: "Chủ"
+  notification:
+    ago: "trước"
+    shop: "vừa thay đổi trạng thái"
+    index: "Thông báo của bạn"
+    product: "có một bình luận"
+    order: "đang chờ duyệt."
+    status: "vừa"
+    read_all: "Đánh dấu tất cả đã đọc"
+  order_statistics:
+    id: "ID"
+    name: "Tên sản phẩm"
+    quantity: "Số lượng"
+    price: "Đơn giá"
+    detail: "Chi tiết"
+    accept: "Chấp nhận"
+    reject: "Từ chối"
+    back: "Quay lại"
+    done: "Hoàn thành"
+    step1: "Bước 1: Kiểm tra đơn hàng"
+    step2: "Bước 2: Đóng đơn hàng"
+    continue: "Tiếp tục"
+    total_price: "Tổng cộng: "
+    done: "Hoàn thành"
+  order_day: "Ngày đặt hàng"
+  language: "Ngôn ngữ: "
+  english: "English"
+  vietnam: "Tiếng Việt"
+  Janpanese: "日本語"
+  index:
+    intro_search:
+      title: "Tìm kiếm dễ dàng"
+      context: "Với F-order, bạn có thể dễ dàng tìm kiếm những món ăn, đồ uống ngon, chất lượng theo từng miền"
+    intro_order:
+      title: "Đặt hàng thuận tiện, nhanh chóng"
+      context: "Bạn có thể đặt cho mình các sản phẩm một cách dễ dàng, luôn nhận được thông báo mỗi khi đơn hàng có sự thay đổi"
+    intro_shop:
+      title: "Tạo và quản lý shop dễ dàng"
+      context: "F-order sẽ là nơi lý tưởng để đưa các sản phẩm của bạn đến với tất cả mọi người,
+        chỉ một vài bước đơn giản là bạn đã có thể làm chủ một cửa hàng của riêng mình"
+  feature:
+    title: "Tính năng"
+    search: "Tìm kiếm sản phẩm"
+    order: "Đặt hàng"
+    shop: "Tạo và quản lí cửa hàng"
+  save_shop_domain_successfully: "Miền của cửa hàng được lưu thành công"
+  can_not_add_shop: "Không thể thêm cửa hàng này vào miền"
+  save_product_domain_successfully: "Miền của sản phẩm được lưu thành công"
+  can_not_add_product: "Không thể thêm sản phẩm này vào miền"
+  request_shop:
+    lb: "Thêm cửa hàng"
+    shop_name: "Tên cửa hàng"
+    user_name: "Tên chủ cửa hàng"
+    approve: "Chấp nhận"
+    reject: "Từ chối"
+    pending: "Đang chờ"
+    request_to_domain: "Yêu cầu"
+    success: "Xác nhận yêu cầu thành công!"
+    faild: "Xác nhận yêu cầu thất bại!"
+    can_not_find_request: "Không tìm thấy yêu cầu"
+    status: "Trạng thái"
+    domain: "Miền: "
+    already: "Đã thuộc miền"
+    title: "Danh sách yêu cầu"
+    domain_name: "Tên miền"
+    page_title: "Quản lý yêu cầu thêm cửa hàng vào miền"
+    can_not_find_shop: "Không tìm thấy cửa hàng"
+    manage_shop: "Quản lý cửa hàng"
+    domain: "Yêu cầu thêm cửa hàng vào miền"
+    domain_name: "Tên miền"
+    cancel: "Hủy"
+  view_all_domains: "Tất cả miền"

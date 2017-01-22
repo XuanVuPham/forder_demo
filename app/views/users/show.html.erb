@@ -1,0 +1,60 @@
+<% provide :title, @user.name %>
+<div class="row">
+  <div class="toppad col-md-12" >
+    <div class="panel panel-info">
+      <div class="panel-heading">
+        <h3 class="panel-title text-center"><%= @user.name %></h3>
+      </div>
+      <div class="panel-body">
+        <div class="row">
+          <div class="col-md-4">
+            <%= image_tag @user.avatar.url, alt: @user.name, class: "avatar-show-user" %>
+          </div>
+          <div class="col-md-8">
+            <table class="table">
+              <tbody>
+                <tr>
+                  <td><%= t ".email" %></td>
+                  <td><%= @user.email %></td>
+                </tr>
+                <tr>
+                  <td><%= t ".chatwork" %></td>
+                  <td><%= @user.chatwork_id %></td>
+                </tr>
+                <tr>
+                  <td><%= t ".create_at" %></td>
+                  <td>
+                    <%= @user.created_at.strftime(t "date_format") %>
+                  </td>
+                </tr>
+                <tr>
+                  <td><%= t ".status" %></td>
+                  <td>
+                    <span class="label label-info"><%= @user.status %></span>
+                  </td>
+                </tr>
+                <tr>
+                  <td><%= t ".description" %></td>
+                  <td>
+                    <%= @user.description %>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <div class="panel-footer">
+              <span class="pull-right">
+                <% if current_user? @user %>
+                  <%= link_to edit_user_registration_path,
+                    class: "btn btn-sm btn-warning" do %>
+                    <i class="glyphicon glyphicon-edit"></i>
+                    <%= t "common.edit_button" %>
+                  <% end %>
+                <% end %>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,9 @@
+<div class="col-md-1">
+  <%= label_tag :shop, t(".shop"), class: "text-warning"  %>
+</div>
+<div class="col-md-3">
+  <%= select_tag params_shop,
+    options_from_collection_for_select(@shops, :id, :name,
+    params[params_shop]),
+    include_blank: true, class: "form-control" %>
+</div>

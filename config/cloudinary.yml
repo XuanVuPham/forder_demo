@@ -1,0 +1,19 @@
+---
+development:
+  cloud_name: hoangmirs
+  api_key: '381973228872932'
+  api_secret: rfl6wgTmuwgvXyH0WyiOm5-40ew
+  enhance_image_tag: true
+  static_image_support: false
+production:
+  cloud_name: hoangmirs
+  api_key: '381973228872932'
+  api_secret: rfl6wgTmuwgvXyH0WyiOm5-40ew
+  enhance_image_tag: true
+  static_image_support: true
+test:
+  cloud_name: hoangmirs
+  api_key: '381973228872932'
+  api_secret: rfl6wgTmuwgvXyH0WyiOm5-40ew
+  enhance_image_tag: true
+  static_image_support: false

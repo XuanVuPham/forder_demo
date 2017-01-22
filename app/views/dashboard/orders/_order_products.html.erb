@@ -1,0 +1,46 @@
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th></th>
+      <th><%= t "oder.id" %></th>
+      <th><%= t "oder.name" %></th>
+      <th><%= t "oder.image" %></th>
+      <th><%= t "oder.quantity" %></th>
+      <th><%= t ".status" %></th>
+      <th><%= t "oder.price" %></th>
+      <th colspan="2"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% order_products.each_with_index do |item, index| %>
+      <tr>
+        <input type="hidden" value="<%=item.id%>">
+        <td><input type="checkbox" class = "checkbox-abc" id="checkbox-<%= item.id %>"/>
+        <td><%= index + 1 %></td>
+        <td><%= item.product_name %></td>
+        <td>
+          <span class="product-thumbnail">
+            <%= image_tag item.product.image.url %>
+          </span>
+        </td>
+        <td class="text-center"><%= item.quantity %></td>
+        <td >
+          <div class="order-product-status-<%= item.id %>">
+            <%= status_order_product item %>
+          </div>
+        <td class="text-center">
+          <strong><%= item.total_price %> <%= t"cart.vnd" %> </strong></td>
+        <td class="col-md-1">
+          <button class= "btn btn-primary single-action" value= "accepted">
+            <%= t "order_statistics.accept"%>
+          </button>
+        </td>
+        <td class="col-md-1">
+          <button class= "btn btn-danger single-action" value="rejected">
+            <%= t "order_statistics.reject"%>
+          </button>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

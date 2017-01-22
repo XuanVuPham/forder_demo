@@ -1,0 +1,50 @@
+<%= simple_form_for [:dashboard, @shop, @product] do |f| %>
+  <%= render "shared/error_messages", object: @product %>
+   <div class="form-group">
+      <%= f.label :category_id %>
+      <%= f.select :category_id,
+        @categories.collect {|category| [category.name, category.id]},
+          {}, {class: "form-control"} %>
+        </div>
+  <div class="form-group">
+    <%= f.label :name %>
+    <%= f.text_field :name, placeholder: t(".product_name"),
+      error: t(".product_name_error") , class: "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= f.label :description %>
+    <%= f.text_area :description, placeholder: t(".product_description"),
+      error: t(".product_description_error"), class: "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= f.label :price %>
+    <%= f.number_field :price, placeholder: t(".product_price"),
+      error: t(".product_price_error"), class: "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= f.label :start_hour %>
+    <%= f.time_select :start_hour,  minute_step: 5 %>
+    <%= f.label :end_hour %>
+    <%= f.time_select :end_hour,  minute_step: 5 %>
+  </div>
+  <div class="form-group">
+    <%= f.input :status, collection: Product.statuses.keys, selected: :active, class: "form-control inline" %>
+  </div>
+  <div class="form-group">
+    <%= f.input :tag_list, class: "form-control",
+      input_html: {value: @product.tag_list.to_s, data: {role: "tagsinput"}} %>
+  </div>
+  <div class="form-group">
+    <%= f.label :image %>
+    <%= f.file_field :image, accept: Settings.pictures.accepted_files,
+      class: "upload_img" %>
+    <%= image_tag @product.image.url, class: "avatar padding_top_10px defaut-size" %>
+  </div>
+  <% if @domain.present? %>
+    <%= f.hidden_field :domain_id, value: @domain.id %>
+  <% end %>
+  <%= f.hidden_field :user_id, value: current_user.id %>
+  <%= link_to t("common.back_button"), :back, class: "btn btn-warning" %>
+  <%= f.submit yield(:submit_button),
+    class: "btn btn-primary space-top-submit" %>
+<% end %>

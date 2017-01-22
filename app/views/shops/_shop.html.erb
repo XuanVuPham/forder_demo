@@ -1,0 +1,41 @@
+<div class="col-sm-4 box_shop">
+  <div class="col-sm-12">
+    <div class="col-md-5">
+      <div class="row thumbnail">
+        <% if @domain.present? %>
+          <%= link_to domain_shop_path(@domain, shop) do %>
+            <%= image_tag shop.avatar.url, class: "top-shop" %>
+          <% end %>
+        <% else %>
+          <%= link_to domain_shop_path(shop, domain_id: "not_find") do %>
+            <%= image_tag shop.avatar.url, class: "top-shop" %>
+          <% end %>
+        <% end %>
+
+      </div>
+    </div>
+    <div class="col-md-7">
+      <h3 class="margin_top_5px">
+        <% if @domain.present? %>
+          <%= link_to shop.name, domain_shop_path(@domain, shop) %>
+        <% else %>
+          <%= link_to shop.name,domain_shop_path(shop, domain_id: "not_find") %>
+        <% end %>
+      </h3>
+      <%= render "shared/shop_status_label", shop: shop %>
+      <input id="shop-average-rating" type="number"
+        class="rating-loading star-rating" data-size="sm"
+        value=<%= shop.averate_rating %> >
+      <div class="description quote"><p><%= shop.description %></p></div>
+      <div>
+        <ul class="tags">
+          <% shop.all_tags.each do |tag| %>
+            <li>
+              <%= link_to tag.name, tag_path(tag), class: "tag" %>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

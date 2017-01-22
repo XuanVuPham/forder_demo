@@ -1,0 +1,42 @@
+<div class="well">
+  <div class="media">
+    <%= link_to shop, class: "pull-left item-thumbnail" do %>
+      <%= image_tag shop.avatar.url, class: "media-object" %>
+    <% end %>
+    <div class="media-body">
+      <h3 class="media-heading">
+        <i class="fa fa-home"></i>
+        <%= link_to shop.name, shop %>
+      </h3>
+      <p class="text-right">
+        <%= render "shared/shop_status_label", shop: shop %>
+      </p>
+      <p><%= shop.description %></p>
+      <ul class="list-inline list-unstyled">
+        <li>
+          <span>
+            <i class="fa fa-user"></i>
+            <%= link_to shop.owner_name, shop.owner %>
+          </span>
+        </li>
+        <li>|</li>
+        <span>
+          <i class="fa fa-shopping-bag"></i>
+          <%= t "livesearch.shop_products", number: shop.products.size %>
+        </span>
+        <li>|</li>
+        <li>
+          <span class="glyphicon glyphicon-star"></span>
+          <span class="glyphicon glyphicon-star"></span>
+          <span class="glyphicon glyphicon-star"></span>
+          <span class="glyphicon glyphicon-star"></span>
+          <span class="glyphicon glyphicon-star-empty"></span>
+        </li>
+        <li>|</li>
+        <li>
+          <%= social_share_button_tag shop.name %>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

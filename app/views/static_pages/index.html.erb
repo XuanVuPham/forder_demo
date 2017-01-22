@@ -1,0 +1,104 @@
+<div class="index">
+  <div class="intro-message">
+    <div class="logo">
+      <div><%= image_tag "logo.png", class: "displayed" %></div>
+      <div class="text-center"> <h2><%= t "common.base_title" %></h2></div> 
+      <div class="text-center">
+        <%= link_to t("header.sign_in"), new_user_session_path,
+          class: "btn btn-warning btn-lg" %>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="feature">
+  <section id="services" class="content-section-a">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12 text-center">
+          <h1 class="section-heading">
+            <strong><%= t "feature.title" %></strong>
+          </h1>        
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-4 col-md-6 text-center">
+          <div class="service-box">
+            <%= image_tag "draft/search.jpg", class: "img-responsive img-circle" %>
+            <h3><strong><%= t "feature.search" %></strong></h3>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6 text-center">
+          <div class="service-box">
+            <%= image_tag "draft/order.png", class: "img-responsive img-circle" %>
+            <h3><strong><%= t "feature.order" %></strong></h3>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6 text-center">
+          <div class="service-box">
+            <%= image_tag "draft/shop.jpg", class: "img-responsive img-circle" %>
+            <h3><strong><%= t "feature.shop" %></strong></h3>
+          </div>
+        </div>          
+      </div>
+    </div>
+  </section>
+</div>
+<div class="intro">
+  <div class="intro-web">
+    <div class="content-section-c">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-5 col-sm-6">
+            <div class="clearfix"></div>
+            <h1>
+              <strong><%= t "index.intro_search.title" %></strong>
+            </h1>
+            <p class="lead"><%= t "index.intro_search.context" %></p>
+          </div>
+          <div class="col-lg-5 col-lg-offset-2 col-sm-6">
+            <%= image_tag "draft/search-page.png", class: "img-responsive" %>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="content-section-a">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-5 col-lg-offset-1 col-sm-push-6  col-sm-6">
+            <div class="clearfix"></div>
+            <h1 class="section-heading">
+              <strong><%= t "index.intro_shop.title" %></strong>
+            </h1>
+            <p class="lead"><%= t "index.intro_shop.context" %></p>
+          </div>
+          <div class="col-lg-5 col-sm-pull-6  col-sm-6">
+            <%= image_tag "draft/shop-page.png", class: "img-responsive" %>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="content-section-c">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-5 col-sm-6">
+            <div class="clearfix"></div>
+            <h1>
+              <strong><%= t "index.intro_order.title" %></strong>
+            </h1>
+            <p class="lead"><%= t "index.intro_order.context" %></p>
+          </div>         
+          <div class="col-lg-5 col-lg-offset-2 col-sm-6">
+            <%= image_tag "draft/order-page.png", class: "img-responsive" %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="end-index">
+  <div class="end">
+    <%= image_tag "logo.png", class: "displayed" %>
+  </div>
+</div>

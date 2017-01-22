@@ -1,0 +1,70 @@
+<% provide :title, t(".title") %>
+<div>
+  <%= link_to t("common.create"), new_admin_user_path,
+    class: "btn btn-block btn-success btn-sm btn-create-user" %>
+  <span>
+    <%= form_tag admin_set_user_index_path(excel: :xls), method: :post,
+      multipart: true do %>
+      <%= file_field_tag :file, onchange: "this.form.submit();",
+        accept: "#{Settings.xls}, #{Settings.xlsx}", class: "btn btn-sm btn-create-user"%>
+    <% end %>
+  </span>
+  <p>
+    <%= t("download") %>
+    <%= link_to t("excel"), admin_users_path(format: "xls") %>
+  </p>
+</div>
+<div class="row">
+  <div class="col-md-12">
+    <div class="panel panel-success">
+      <table class="table table-striped table-hover table-bordered">
+        <thead class="">
+          <tr>
+            <th><%= t "common.number" %></th>
+            <th><%= t ".name" %></th>
+            <th><%= t ".email" %></th>
+            <th><%= t ".chatwork" %></th>
+            <th><%= t ".avatar" %></th>
+            <th><%= t ".description" %></th>
+            <th><%= t ".status" %></th>
+            <th><%= t ".actions" %></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @users.each_with_index do |user, index| %>
+            <tr>
+              <td><%= increase_one index %></td>
+              <td><%= user.name %></td>
+              <td><%= user.email %></td>
+              <td><%= user.chatwork_id %></td>
+              <td>
+                <div class="search-user-image">
+                  <%= image_tag user.avatar.url, class: "thumbnail" %>
+                </div>
+              </td>
+              <td><%= user.description %></td>
+              <td class="status"><%= user.status %></td>
+              <td>
+                <input type="hidden" value="<%= user.id %>" class="user_id">
+                <%= link_to t("common.edit_button"),
+                  edit_admin_user_path(user.id), class: "btn btn-primary" %>
+                <%= link_to t("common.delete_button"), admin_user_path(user.id),
+                  method: :delete, class: "btn btn-danger" %>
+                <% if user.status == "wait" %>
+                  <%= link_to t(".active"), admin_user_path(user.id, status: "active"), method: :put,
+                    class: "btn btn-primary btn_block" %>
+                <% else %>
+                  <%= link_to t(".wait"), admin_user_path(user.id, status: "wait"), method: :put,
+                    class: "btn btn-danger btn_block" %>
+                <% end %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+    <div class="col-lg-12 text-center">
+      <%= paginate @users, theme: "twitter-bootstrap-3" %>
+    </div>
+  </div>
+</div>

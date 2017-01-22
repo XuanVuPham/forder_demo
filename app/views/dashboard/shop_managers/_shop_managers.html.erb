@@ -1,0 +1,48 @@
+<div class="col-md-12">
+  <div class="panel panel-success">
+    <table class="table table-striped table-hover table-info">
+      <thead class="">
+        <tr>
+          <th><%= t "common.number" %></th>
+          <th><%= t ".name" %></th>
+          <th><%= t ".email" %></th>
+          <th><%= t ".chatwork" %></th>
+          <th><%= t ".avatar" %></th>
+          <th><%= t ".description" %></th>
+          <th><%= t ".status" %></th>
+          <th><%= t ".actions" %></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @managers.each_with_index do |user, index| %>
+          <tr>
+            <td><%= increase_one index %></td>
+            <td><%= user.name %></td>
+            <td><%= user.email %></td>
+            <td><%= user.chatwork_id %></td>
+            <td>
+              <div class="user-item-image">
+                <%= image_tag user.avatar.url %>
+              </div>
+            </td>
+            <td><%= user.description %></td>
+            <td class="status"><%= user.status %></td>
+            <td>
+              <% if @shop.is_owner? user %>
+                <span class="label label-info">
+                  <%= t "livesearch.owner" %>
+                </span>
+              <% else %>
+                <%= link_to t("livesearch.remove"),
+                  dashboard_shop_shop_manager_path(@shop,
+                    @shop.get_shop_manager_by(user)),
+                  method: :delete, data: {confirm: t("common.delete_confirm")},
+                  class: "btn btn-sm btn-danger" %>
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

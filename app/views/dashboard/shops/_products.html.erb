@@ -1,0 +1,37 @@
+<div class="panel-body">
+  <table class="table table-striped table-hover">
+    <thead>
+      <div class="row">
+        <%= form_tag [:dashboard, @shop], method: :get do |f| %>
+          <div class="container">
+            <div class="panel panel-default edit-form">
+              <div class="panel-heading">
+                <h4><strong><%= t "dashboard.shops.show.edit_all_time" %></strong></h4>
+              </div>
+              <div class="panel-body">
+                <%= label_tag t("dashboard.shops.show.start_time") %>
+                <%= time_field_tag :start_hour, "", minute_step: 5, class: "edit-time" %>
+                <%= label_tag t("dashboard.shops.show.end_time") %>
+                <%= time_field_tag :end_hour, "", minute_step: 5, class: "edit-time" %>
+                <%= submit_tag t("dashboard.shops.show.update_all"),
+                  class: "btn btn-primary space-top-submit btn-update" %>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+      <tr>
+        <th><%= t ".image" %></th>
+        <th><%= t ".name" %></th>
+        <th><%= t "description" %></th>
+        <th><%= t ".price" %></th>
+        <th><%= t ".status" %></th>
+        <th><%= t ".actions" %></th>
+      </tr>
+    </thead>
+    <tbody>
+      <%= render @products %>
+    </tbody>
+  </table>
+  <%= paginate @products %>
+</div>

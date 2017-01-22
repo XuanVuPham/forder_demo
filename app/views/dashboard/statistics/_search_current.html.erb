@@ -1,0 +1,16 @@
+<div class="search_current">
+  <div class="row">
+    <%= form_tag dashboard_statistics_path, method: :get, remote: true do %>
+      <%= render "shop", params_shop: :current_shop_id %>
+      <div class="col-md-5">
+        <%= select_tag :category_statistic,
+          options_for_select(Statistics.category_statistic,
+          params[:category_statistic]),
+          class: "form-control" %>
+      </div>
+      <div class="col-md-2">
+        <%= submit_tag t(".btn_search"), class: "btn btn-primary" %>
+      </div>
+    <% end %>
+  </div>
+</div>

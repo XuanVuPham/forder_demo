@@ -1,0 +1,131 @@
+<div class="col-sm-12 top_home">
+  <div class="col-sm-3">
+    <div class="block-item-list block padding-0">
+      <h3 class="title padding-left-10">
+        <span><%= t "common.categories" %></span>
+      </h3>
+      <div class="clearfix body">
+        <div class="category-list padding-top-0">
+          <% if @categories.size < Settings.max_content_scroll %>
+            <%= link_to products_path,
+              class: "btn btn-default col-lg-6 col-md-12 active" do %>
+              <span><%= t "common.category.all" %></span>
+            <% end %>
+            <% @categories.each do |category|%>
+              <% cache category do %>
+                <%= link_to category_path(category),
+                  class: "btn btn-default col-lg-6 col-md-12 active" do %>
+                  <span><%= category.name %></span>
+                  <span class="badge"><%= category.products.size %></span>
+                <% end %>
+              <% end %>
+            <% end %>
+          <% else %>
+            <div class="scroll">
+              <%= link_to products_path,
+              class: "btn btn-default col-lg-6 col-md-12 active" do %>
+                <span><%= t "common.category.all" %></span>
+              <% end %>
+              <% @categories.each do |category|%>
+                <% cache category do %>
+                  <%= link_to category_path(category),
+                    class: "btn btn-default col-lg-6 col-md-12 active" do %>
+                    <span><%= category.name %></span>
+                    <span class="badge"><%= category.products.size %></span>
+                  <% end %>
+                <% end %>
+              <% end %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+     <div class="block-item-list block">
+      <h3 class="title">
+        <span><%= t "public_domain" %>(<%= @domains.size %>)</span>
+      </h3>
+      <div class="clearfix body">
+        <div class="category-list padding-top-0">
+          <% if @domains.present? %>
+            <% if @domains.size < Settings.max_content_scroll%>
+              <% @domains.each do |domain| %>
+                <%= link_to domain_path(domain),
+                  class: "btn btn-default col-lg-6 col-md-12 active" do %>
+                    <span><%= domain.name %></span>
+                <% end %>
+              <% end %>
+            <% else %>
+                <div class="scroll">
+                  <% @domains.each do |domain| %>
+                    <%= link_to domain_path(domain),
+                      class: "btn btn-default col-lg-6 col-md-12 active" do %>
+                        <span><%= domain.name %></span>
+                    <% end %>
+                  <% end %>
+                </div>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Begin carousel -->
+  <div class="col-sm-9">
+    <div id="id_top_products" class="carousel slide" data-ride="carousel">
+      <div class="carousel-inner" role="listbox">
+        <% @shops.each_with_index do |shop, index| %>
+          <div class="<%= index == 0 ? 'item active' : 'item' %>">
+            <%= image_tag shop.cover_image.url, alt: shop.name, class: "defaut-pic-cover" %>
+            <div class="carousel-caption slide_bottom">
+              <h3><%= shop.name %></h3>
+              <p><%= shop.description %></p>
+            </div>
+          </div>
+        <% end %>
+      </div>
+      <a class="left carousel-control" href="#id_top_products" role="button"
+         data-slide="prev">
+        <span class="fa fa-angle-left" aria-hidden="true"></span>
+        <span class="sr-only"><%= t "common.previous" %></span>
+      </a>
+      <a class="right carousel-control" href="#id_top_products" role="button"
+         data-slide="next">
+        <span class="fa fa-angle-right left-55" aria-hidden="true"></span>
+        <span class="sr-only"><%= t "common.next" %></span>
+      </a>
+    </div>
+  </div>
+  <!-- End carousel -->
+</div>
+
+<div class="row">
+  <div class="col-md-12 row-title">
+    <h2 class="section_title">
+      <%= t "common.top_shops" %>
+    </h2>
+  </div>
+  <hr>
+  <div class="col-md-12 padding_0" id="id_shops_list">
+    <%= render @shops %>
+  </div>
+  <div class="btn_view_all_wrapper pull-center">
+    <%= link_to t("common.btn_view_all"), shops_path,
+      class: "btn btn_view_all btn-warning top_shop" %>
+    </div>
+</div>
+
+<div class="row">
+  <div class="col-md-12 row-title">
+    <h2 class="section_title">
+      <%= t "common.top_products" %>
+    </h2>
+  </div>
+  <hr>
+  <div class="col-md-12 magin_top_10px" id="id_products_list">
+    <%= render @products %>
+  </div>
+  <div class="btn_view_all_wrapper pull-center">
+    <%= link_to t("common.btn_view_all"), products_path,
+      class: "btn btn_view_all btn-warning top_shop" %>
+  </div>
+</div>

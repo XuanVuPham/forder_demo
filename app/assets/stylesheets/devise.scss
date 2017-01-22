@@ -1,0 +1,73 @@
+@import "https://fonts.googleapis.com/css?family=Open+Sans";
+
+$bg-color-form-sign-in: #f7f7f7;
+$color-shadow: #888888;
+.devise {
+  .text-center {
+    text-align: center;
+  }
+
+  .title {
+    font-family: "Open Sans", sans-serif;
+    font-weight: 300;
+    font-size: 50px;
+    color: #555;
+  }
+
+  .form-sign {
+    padding: 10px;
+    border: 1px solid #ddd;
+    background-color: $bg-color-form-sign-in;
+    box-shadow: 0 5px 5px $color-shadow;
+  }
+
+  .btn-sign {
+    padding: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+    color: #555;
+    box-shadow: 0 2px 5px $color-shadow;
+    &:hover {
+      box-shadow: 0px 5px 5px $color-shadow;
+    }
+  }
+
+  .color-white {
+    color: white;
+  }
+  .margin-top-10 {
+    margin-top: 10px
+  }
+
+  .padding-top-20 {
+    padding-top: 20px;
+  }
+}
+
+.alert-error {
+  background-color: #f2dede;
+  border-color: #eed3d7;
+  color: #b94a48;
+  text-align: left;
+ }
+
+.alert-alert {
+  background-color: #f2dede;
+  border-color: #eed3d7;
+  color: #b94a48;
+  text-align: left;
+ }
+
+.alert-success {
+  background-color: #dff0d8;
+  border-color: #d6e9c6;
+  color: #468847;
+  text-align: left;
+ }
+
+.alert-notice {
+  background-color: #dff0d8;
+  border-color: #d6e9c6;
+  color: #468847;
+  text-align: left;
+ }

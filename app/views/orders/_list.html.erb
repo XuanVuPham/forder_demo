@@ -1,0 +1,23 @@
+<div class="panel-group" id="<%= order.id %>">
+  <div class="panel panel-default">
+    <div class="panel-body">
+      <div class="margin-bottom-15">
+        <strong><%= t"oder.status" %></strong>
+        <%= status_order order %>
+        <% if order.pending? %>
+          <%= link_to t("oder.btn_cancel_oder"), order_path(order, shop_id: order.shop_id),
+            method: :delete, class: "btn btn-xs btn-danger pull-right" %>
+        <% end %>
+        <hr>
+      </div>
+      <%= render "order_products",
+        order_products: order.order_products.where(user: current_user) %>
+      <div class="pull-right">
+        <h4 class="style_price">
+          <b><%= t "oder.total" %></b>
+          <%= format_price order.total_pay %>
+        </h4>
+      </div>
+    </div>
+  </div>
+</div>

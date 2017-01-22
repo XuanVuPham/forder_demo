@@ -1,0 +1,11 @@
+<% @order_products_done.each do |hash_orders| %>
+  <%= hash_orders.first %>
+  <%= t "oder.id" %>,<%= t "oder.name" %>,<%= t "oder.quantity" %>,<%= t "oder.price" %>
+  <% order = hash_orders.last %>
+  <% total = 0 %>
+  <% order.each_with_index do |order_product, index| %>
+    <%= increase_one index %>,<%= order_product.name %>,<%= order_product.quantity %>,<%= format_price order_product.quantity * order_product.product.price %>
+    <% total += order_product.quantity * order_product.product.price %>
+  <% end %>
+  <%= t "oder.total" %><%= format_price total %>
+<% end %>

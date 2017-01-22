@@ -1,0 +1,17 @@
+<li>
+  <div class="commenterImage">
+    <%= image_tag comment.user_avatar.url, alt: comment.user_name %>
+  </div>
+  <span class="commentText" id="<%= comment.id %>">
+    <p class=""><%= comment.content %></p>
+    <span class="sub-text">
+      <%= link_to comment.user_name, "#" %>
+      <%= time_ago_in_words comment.created_at %>
+    </span>
+  </span>
+  <span>
+    <%= link_to t("common.delete_button"), comment_path(comment),
+      method: :delete, data: {confirm: t("common.delete_confirm")},
+      class: "pull-right" %>
+  </span>
+</li>

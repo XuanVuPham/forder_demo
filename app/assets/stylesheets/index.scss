@@ -1,0 +1,119 @@
+IMG.displayed {
+  display: block;
+  margin-left: auto;
+  margin-right: auto; 
+  max-width: 50%;
+}
+
+.content-section-c {
+  padding: 50px 0;
+  background-color: white;
+}
+
+.content-section-a {
+  padding: 50px 0;
+  background-color: rgba(248, 248, 248, 0.72);
+
+  .section-heading {
+    padding-bottom: 50px;
+    padding-right: 60px;
+  }
+}
+
+.content-section-b {
+  padding: 50px 0;
+  color: white;
+}  
+
+.index {
+  font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  background: url('bg.jpg') no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  background-size: 100% 100%; 
+
+  h2 {
+    color: white;
+  }
+
+  .intro-message {
+    padding-top: 250px;
+  }
+
+  .logo {
+    padding-bottom: 400px;
+  }
+}
+
+.header-index {
+  .navbar-brand {
+    height: 42px;
+    padding: 3px 15px;
+    float: left;
+    font-size: 18px;
+    line-height: 20px;
+
+    img {
+      height: 50px;
+      width: 150px;
+      display: block;
+    }
+  }
+
+  .language {
+    padding-top: 15px;
+    text-align: center;
+    color: #777
+  }
+
+  li ul {
+    cursor: pointer;
+  }
+}
+
+.feature{
+  background: url('feature.jpg') no-repeat center center fixed;
+  background-size: cover;
+
+  img {
+    height: 250px;
+    width: 300px;
+    display: block;
+  }
+
+  h3 {
+    padding-right: 50px; 
+  }
+}
+
+.intro {
+  font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  background: url('coffee.jpg') no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  background-size: cover;
+  -o-background-size: cover;
+  padding-top: 750px;
+}
+
+.intro-web {
+  background: url('drink-bg.jpg') no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  background-size: cover;
+  -o-background-size: cover;
+}
+
+.end-index {
+  background: url('footer-bg.jpg') no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  background-size: cover;
+  -o-background-size: cover;
+  padding-bottom: 200px;
+
+  .end {
+    padding-top: 250px;
+    padding-bottom: 250px;
+  }
+}
