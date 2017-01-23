@@ -72,7 +72,7 @@ class ShopDomainsController < ApplicationController
 
   def check_save_shop_domain shop_domain
     if shop_domain.save
-        shop_domain.create_event_request_shop @domain.owner, shop_domain
+        shop_domain.create_event_request_shop @choosen_domain.owner, shop_domain
       if shop_domain.approved?
         AddShopProductToDomainService.new(@shop, @domain).add
       end

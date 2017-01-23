@@ -1,5 +1,9 @@
 <div class="fade in well">
-  <h3><%= t "price_message" %><%= format_price @cart_group_price %></h3>
+  <% if @order_price.present? %>
+    <h3><%= t "price_message" %><%= format_price @order_price %></h3>
+  <% else %>
+    <h3><%= t "price_message" %><%= format_price @cart_group_price %></h3>
+  <% end %>
   <% if @count_exit_order == Settings.count_tag %>
     <h3><%= @all_order_deleted %></h3>
   <% else %>
@@ -25,7 +29,7 @@
   <% if @domain.present? %>
     <%= link_to t("cancel"), domain_carts_path(@domain), method: :get, class: "list btn btn-primary btn-action"%>
     <% if @shop.present? %>
-      <%= link_to t("continue"), edit_carts_path( shop_id:@products_deleted.first.shop.id), class: "btn btn_add_to_cart btn-add" %>
+      <%= link_to t("continue"), edit_carts_path(shop_id: @products_deleted.first.shop.id), class: "btn btn_add_to_cart btn-add" %>
     <% else %>
       <%= link_to t("continue"), domain_carts_path(@domain), method: :post, class: "btn btn_add_to_cart btn-add" %>
     <% end %>

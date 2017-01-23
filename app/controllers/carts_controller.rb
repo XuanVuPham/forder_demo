@@ -16,6 +16,8 @@ class CartsController < ApplicationController
   end
 
   def new
+    @order_price = params[:order_price]
+    @order_deleted = params[:products_deleted]
     @shop = Shop.find_by id: params[:shop_id]
     @have_order_deleted = t("oder.has_order_deleted") + @count_exit_order.to_s + t("oder.product_deleted")
     @all_order_deleted = t("oder.all_product_will_be_order")
@@ -95,10 +97,11 @@ class CartsController < ApplicationController
     @cart_group.each do |cart_group|
       cart_group[:items].each do |cart|
         product = Product.find_by id: cart.product_id.to_i
-        @cart_group_price += total_price product.price, cart.quantity
         if Time.now.is_between_short_time?(product.start_hour, product.end_hour)
           @count_exit_order += Settings.order_increase
           @products_deleted << product
+        else
+          @cart_group_price += total_price product.price, cart.quantity
         end
       end
     end
