@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170115131053) do
+ActiveRecord::Schema.define(version: 20170120071214) do
 
   create_table "admins", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "email",                  default: "", null: false
@@ -329,6 +329,7 @@ ActiveRecord::Schema.define(version: 20170115131053) do
     t.integer  "domain_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "role"
     t.index ["domain_id"], name: "index_user_domains_on_domain_id", using: :btree
     t.index ["user_id"], name: "index_user_domains_on_user_id", using: :btree
   end

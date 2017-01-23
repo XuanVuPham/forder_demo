@@ -4,7 +4,11 @@ class ShopDomainsController < ApplicationController
   before_action :load_domain_by_param
 
   def index
-    @shop_domains = @choosen_domain.shop_domains.pending
+    @shop_domains = if params[:approved].present?
+      @choosen_domain.shop_domains.approved
+    else
+      @choosen_domain.shop_domains.pending
+    end
   end
 
   def new

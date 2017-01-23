@@ -23,6 +23,13 @@ class Domain < ApplicationRecord
     self.owner == user
   end
 
-  enum status: {professed: 1, secret: 2}
+  def manage_by? user
+    users = User.of_ids self.user_domains.user_ids_by_domain(self)
+    users.include? user
+  end
+
+  enum status: {professed: 1, secret: 2, default: 3}
+  
   scope :by_creator, -> user_id{where owner: user_id}
+  scope :member, -> user_id{where.not owner: user_id}
 end

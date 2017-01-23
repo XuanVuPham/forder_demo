@@ -23,11 +23,11 @@
             <% if value == Domain.statuses[:professed] %>
               <i class="glyphicon glyphicon-globe"></i>
               <span><%= t "professed" %></span>
-            <% else %>
+            <% end %>
+            <% if value == Domain.statuses[:secret]%>
               <i class="glyphicon glyphicon-lock"></i>
               <span><%= t "secret" %></span>
             <% end %>
-
           <% end %>
         </li>
         <li role="separator" class="divider"></li>
@@ -35,19 +35,36 @@
       <% end %>
     </ul>
   </td>
-  <td><%= domain.users.size %></td>
-  <td><%= domain.shop_domains.approved.size %></td>
+  <td>
+    <%= link_to "#{domain.users.size } " +
+      t("manage_domain.edit_member"),
+      user_domains_path(domain_id: domain.id, approved: :true) %>
+  </td>
+  <td>
+    <%= link_to "#{domain.shop_domains.approved.size} " +
+      t("manage_domain.edit_shop"),
+      shop_domains_path(domain_id: domain.id, approved: :true) %>
+  </td>
   <td><%= domain.products.size %></td>
   <td>
-    <strong>
-      <%= link_to t("edit_member"), new_user_domain_path(domain_id: domain.id),
-        method: :get %>
-    </strong><br>
-    <strong>
-      <%= link_to shop_domains_path(domain_id: domain.id) do %>
-        <%= t("shop_request") %>
-        <%= domain.shop_domains.pending.size %>
+    <% unless domain.default? %>
+      <% if domain.belong_to?(current_user.id) || domain.manage_by?(current_user) %>
+        <strong>
+          <%= link_to t("edit_member"),
+            new_user_domain_path(domain_id: domain.id), method: :get %>
+        </strong><br>
+        <strong>
+          <%= link_to shop_domains_path(domain_id: domain.id) do %>
+            <%= t("shop_request") %>
+            <%= domain.shop_domains.pending.size %>
+          <% end %>
+        </strong>
+      <% else %>
+        <%= link_to t("manage_domain.leave"),
+          user_domain_path(find_user_domain(current_user.id, domain.id),
+            user_id: current_user.id, domain_id: domain.id),
+          method: :delete, class: "btn btn-danger btn_block" %>
       <% end %>
-    </strong>
+    <% end %>
   </td>
 </tr>

@@ -1,6 +1,6 @@
 namespace :fdf_db do
   task create_all: [:create_user, :create_admin, :create_shop, :create_category,
-    :create_coupon, :create_product, :create_domain, :create_user_domain] do
+    :create_coupon, :create_product] do
   end
   task create_user: :environment do
     User.create!(
