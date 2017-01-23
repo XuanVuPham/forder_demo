@@ -69,7 +69,7 @@ Rails.application.routes.draw do
   resources :carts
   resources :orders
   resource :orders
-  resources :users, only: :show
+  resources :users
   resources :events, only: [:index, :update] do
     post :read_all, on: :collection
   end

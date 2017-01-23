@@ -18,6 +18,7 @@
         </thead>
         <tbody>
           <% @user_domains.each do |domain|  %>
+
             <tr>
               <td><%= domain.name %></td>
               <td><%= domain.users.size %></td>
