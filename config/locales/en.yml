@@ -689,6 +689,6 @@ en:
     add_manager_successfully: "Domain manager is saved successfully"
     add_manager_faild: "Domain manager is saved failed"
     remove_manager_successfully: "Domain manager is removed successfully"
-    remove: "Remove"
-    manage: "Manager"
+    remove: "Remove Manager"
+    manage: "Set Manager"
     personal: "Personal"
