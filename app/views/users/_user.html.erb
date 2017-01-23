@@ -21,7 +21,7 @@
               domain_id: @choosen_domain.id),
               method: :delete, class: "btn btn-danger btn_block" %>
             <% if user_domain.member? %>
-              <%= link_to t("manage_domain.manager"),
+              <%= link_to t("manage_domain.manage"),
                 user_domain_path(user_domain, role: :manager),
                 method: :patch, class: "btn btn-primary" %>
             <% end %>

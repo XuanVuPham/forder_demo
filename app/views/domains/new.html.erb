@@ -14,7 +14,7 @@
         <div class="form-group">
           <%= f.label :status %><br>
           <%= f.select :status,
-            Domain.statuses.keys.map{|status| [status.titleize, status]},
+            Domain.statuses.keys.select{|status| status != "default"},
             {}, {class: "form-control inline"} %>
         </div>
         <%= link_to t("common.back_button"), :back, class: "btn btn-warning" %>

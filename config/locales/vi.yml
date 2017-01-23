@@ -725,6 +725,6 @@ vi:
     add_manager_successfully: "Thêm quản lý miền thành công"
     add_manager_faild: "Thêm quản lý miền thất bại"
     remove_manager_successfully: "Hủy quản lý miền thành công"
-    remove: "Hủy"
+    remove: "Hủy quản lý"
     manage: "Quản lý"
     personal: "Cá nhân"
