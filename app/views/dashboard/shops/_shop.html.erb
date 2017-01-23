@@ -3,7 +3,9 @@
   <td><%= link_to shop.name, domain_dashboard_shop_path(@domain, shop) %></td>
   <td>
     <div class="image-shop-show">
-      <%= image_tag shop.avatar.url, class: "thumbnail" %>
+      <%= link_to domain_dashboard_shop_path(@domain, shop) do %>
+        <%= image_tag shop.avatar.url, class: "thumbnail" %>
+      <% end %>
     </div>
   </td>
   <td>

@@ -1087,7 +1087,7 @@ namespace :fdf_db do
       description: "Phin Sữa Đá",
       start_hour: "08:00:00",
       end_hour: "20:00:00",
-      image: File.open(Rails.root + "public/images/nuocmo.jpg")
+      image: File.open(Rails.root + "public/images/phinsuada.jpg")
     )
 
     Product.create!(
@@ -1100,7 +1100,7 @@ namespace :fdf_db do
       description: "Cacao Nóng",
       start_hour: "08:00:00",
       end_hour: "20:00:00",
-      image: File.open(Rails.root + "public/images/nuocmo.jpg")
+      image: File.open(Rails.root + "public/images/cacaonong.jpg")
     )
 
     Product.create!(
@@ -1113,7 +1113,7 @@ namespace :fdf_db do
       description: "Trà Sen Vàng",
       start_hour: "08:00:00",
       end_hour: "20:00:00",
-      image: File.open(Rails.root + "public/images/nuocmo.jpg")
+      image: File.open(Rails.root + "public/images/trasenvang.jpg")
     )
 
     Product.create!(
@@ -1126,7 +1126,7 @@ namespace :fdf_db do
       description: "Trà Thanh Đào",
       start_hour: "08:00:00",
       end_hour: "20:00:00",
-      image: File.open(Rails.root + "public/images/nuocmo.jpg")
+      image: File.open(Rails.root + "public/images/trathanhdao.jpg")
     )
 
     Product.create!(
@@ -1139,7 +1139,7 @@ namespace :fdf_db do
       description: "Nâu nóng",
       start_hour: "08:00:00",
       end_hour: "20:00:00",
-      image: File.open(Rails.root + "public/images/nuocmo.jpg")
+      image: File.open(Rails.root + "public/images/naunong.jpg")
     )
 
     Product.create!(
@@ -1152,7 +1152,7 @@ namespace :fdf_db do
       description: "Freeze Matcha",
       start_hour: "08:00:00",
       end_hour: "20:00:00",
-      image: File.open(Rails.root + "public/images/nuocmo.jpg")
+      image: File.open(Rails.root + "public/images/freeze.jpg")
     )
 
     Product.create!(
@@ -1165,7 +1165,7 @@ namespace :fdf_db do
       description: "Trà Thạch Đào",
       start_hour: "08:00:00",
       end_hour: "20:00:00",
-      image: File.open(Rails.root + "public/images/nuocmo.jpg")
+      image: File.open(Rails.root + "public/images/trathachdao.jpg")
     )
   end
 end

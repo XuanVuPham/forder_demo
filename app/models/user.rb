@@ -47,6 +47,10 @@ class User < ApplicationRecord
     end
   end
 
+  def is_user? user
+    self.id == user
+  end
+
   def should_generate_new_friendly_id?
     slug.blank? || name_changed? || super
   end

@@ -40,6 +40,11 @@ class UserDomainsController < ApplicationController
 
   def save_user_domain user_domain
     if user_domain.save
+      if @domain.belong_to? current_user.id
+        user_domain.create_event_add_user_domain @user.id
+      elsif current_user.is_user? @user.id
+        user_domain.create_event_add_user_domain @domain.owner
+      end
       flash[:success] = t "add_domain"
     else
       flash[:danger] = t "can_not_add_account"
