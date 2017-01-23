@@ -52,7 +52,7 @@
                 <% current_user.domains.each do |domain| %>
                   <% unless domain == @domain %>
                     <li>
-                      <%= link_to domain_path(domain) do %> 
+                      <%= link_to domain_path(domain) do %>
                         <i class="<%= domain_icon domain %>"></i>
                         <span><%= domain.name %></span>
                       <% end %>

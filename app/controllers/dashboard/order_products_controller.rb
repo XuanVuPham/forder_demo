@@ -19,7 +19,6 @@ class Dashboard::OrderProductsController < BaseDashboardController
       flash[:success] = t "flash.success.update_order"
       redirect_to dashboard_shop_order_managers_path
     end
-    @order_products_pending.update_all status: :rejected
   end
 
   def update

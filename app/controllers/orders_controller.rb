@@ -45,7 +45,6 @@ class OrdersController < ApplicationController
     end
   end
 
-
   def create
     @cart_shop = load_cart_shop @shop
     if @cart_shop.present?
@@ -125,7 +124,6 @@ class OrdersController < ApplicationController
       if Time.now.is_between_short_time?(product.start_hour, product.end_hour)
         @count_exit_order += Settings.order_increase
         @products_deleted << product
-        @cart_shop.items.delete cart
       end
     end
     if @count_exit_order > Settings.count_tag
@@ -134,7 +132,7 @@ class OrdersController < ApplicationController
         flash[:danger] = t "oder.allthing_deleted"
       else
         @have_order_deleted = t("oder.has_order_deleted") + @count_exit_order.to_s + t("oder.product_deleted")
-        redirect_to new_cart_path @have_order_deleted, @products_deleted
+        redirect_to new_cart_path @have_order_deleted, @products_deleted, shop_id: @shop.id
       end
     end
   end

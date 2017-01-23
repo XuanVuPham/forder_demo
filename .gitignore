@@ -60,4 +60,7 @@ config/environments/*.local.yml
 
 # Ignore application configuration
 /config/application.yml
+<<<<<<< HEAD
 /.idea/
+=======
+>>>>>>> 01081e0afef30624c9b7cd94c1d9977a6b5ed742

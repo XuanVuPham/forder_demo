@@ -20,7 +20,7 @@ class Domain < ApplicationRecord
   end
 
   def belong_to? user
-    self.owner == user.id
+    self.owner == user
   end
 
   enum status: {professed: 1, secret: 2}

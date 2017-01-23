@@ -25,7 +25,14 @@ class Event < ApplicationRecord
       "#{I18n.t "order_of"} #{order_shop_event.user.name}
       #{I18n.t "shop_order_products"}"
     when ShopDomain.name
+
       shop_event_name_message
+
+      domain = Domain.find_by id: eventable_id
+      shop_domain = ShopDomain.find_by id: eventitem_id
+      check_message domain, shop_domain
+    when UserDomain.name
+      check_message_user_domain
     end
   end
 
@@ -42,6 +49,8 @@ class Event < ApplicationRecord
     when User.name
       "#{time_ago_in_words(created_at)} #{I18n.t "notification.ago"}"
     when ShopDomain.name
+      "#{time_ago_in_words(created_at)} #{I18n.t "notification.ago"}"
+    when UserDomain.name
       "#{time_ago_in_words(created_at)} #{I18n.t "notification.ago"}"
     end
   end
@@ -60,6 +69,9 @@ class Event < ApplicationRecord
       Settings.image_url.systemdone
     when ShopDomain.name
       Settings.image_url.systemdone
+    when UserDomain.name
+      user = User.find_by id: eventitem_id
+      user.avatar.url
     end
   end
 
@@ -83,6 +95,8 @@ class Event < ApplicationRecord
       domain = Domain.find_by id: eventable_id
       shop_domain = ShopDomain.find_by id: eventitem_id
       check_message_for_link shop_domain, domain
+    when UserDomain.name
+      check_link_user_domain
     end
   end
 
@@ -90,19 +104,6 @@ class Event < ApplicationRecord
     EventBroadcastJob.perform_now Event.unread.count, self
   end
 
-  def check_message_for_link shop_domain, domain
-    if shop_domain.pending?
-      "/shop_domains/##{eventitem_id}"
-    elsif shop_domain.approved?
-      if user_id == domain.id
-        "/domains?domain_id=#{eventitem_id}"
-      else
-        "/domains/#{domain.slug}/dashboard/shops"
-      end
-    else
-      "/domains/#{domain.slug}/dashboard/shops"
-    end
-  end
   def order_shop_event_user
     if message == Settings.notification_new
       order_shop_event = Order.find_by id: eventitem_id
@@ -130,26 +131,68 @@ class Event < ApplicationRecord
   end
 
   def shop_event_name_message
-    check_message
     if eventable_type == User.name
       order_shop_event = Order.find_by id: eventitem_id
       "#{I18n.t "order_of"} #{order_shop_event.user.name} #{I18n.t "shop_order_products"}"
     end
   end
 
-  def check_message
-    domain = Domain.find_by id: eventable_id
-    shop_domain = ShopDomain.find_by id: eventitem_id
-    if shop_domain.pending?
-      "#{I18n.t "shop_request"}#{shop_domain.shop.name} #{I18n.t "to_domain"}#{domain.name}"
-    elsif shop_domain.approved?
-      if user_id == domain.id
-        "#{I18n.t "owner_active_shop_request"}#{shop_domain.shop.name} #{I18n.t "to_domain"}#{domain.name}"
+  def check_message domain, shop_domain
+    if shop_domain.present?
+      case true
+      when shop_domain.pending?
+        "#{I18n.t "shop_request"}#{shop_domain.shop.name} #{I18n.t "to_domain"}#{domain.name}"
+      when shop_domain.approved?
+        if user_id == domain.owner
+          "#{I18n.t "owner_active_shop_request"}#{shop_domain.shop.name} #{I18n.t "to_domain"}#{domain.name}"
+        else
+          "#{I18n.t "active_shop_request"}#{shop_domain.shop.name} #{I18n.t "to_domain"}#{domain.name}"
+        end
       else
-        "#{I18n.t "active_shop_request"}#{shop_domain.shop.name} #{I18n.t "to_domain"}#{domain.name}"
+        "#{I18n.t "blocked_shop_request"}#{domain.name}"
       end
     else
-      "#{I18n.t "blocked_shop_request"}#{domain.name}"
+      "#{I18n.t "dada_not_found"}"
+    end
+  end
+
+  def check_message_for_link shop_domain, domain
+    if shop_domain.present?
+      case true
+      when shop_domain.pending?
+        "/shop_domains?domain_id=#{domain.id}"
+      when shop_domain.approved?
+        if user_id == domain.owner
+          "/domains?domain_id=#{eventitem_id}"
+        else
+          "/domains/#{domain.slug}/dashboard/shops"
+        end
+      else
+        "/domains/#{domain.slug}/dashboard/shops"
+      end
+    else
+      "#"
+    end
+  end
+
+  def check_link_user_domain
+    domain = Domain.find_by id: eventable_id
+    user = User.find_by id: eventitem_id
+    if user_id == domain.owner
+      "/domains?domain_id=#{domain.id}"
+    elsif user_id == user.id
+      "/domains/#{domain.slug}"
+    end
+  end
+
+  def check_message_user_domain
+    domain = Domain.find_by id: eventable_id
+    user = User.find_by id: eventitem_id
+    if domain.belong_to? user_id
+      "#{user.name}#{I18n.t "request_join_domain"}#{domain.name}"
+    elsif user.is_user? user_id
+      domain_owner = User.find_by id: domain.owner
+      "#{I18n.t "add_join_domain"}#{domain.name}#{I18n.t "by"}#{domain_owner.name}"
     end
   end
 end

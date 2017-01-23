@@ -131,7 +131,7 @@ class Dashboard::ProductsController < BaseDashboardController
 
   def check_shop_of_domain? domain
     shop_domain = ShopDomain.find_by shop_id: @shop.id, domain_id: domain.id
-    shop_domain.active?
+    shop_domain.approved?
   end
 
   def save_product_domain domain
