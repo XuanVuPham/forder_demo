@@ -3,7 +3,7 @@ class UserDomainsController < ApplicationController
   before_action :load_domain_by_param
   before_action :load_user_domain, only: :update
 
-  def index 
+  def index
     @users = @choosen_domain.users
   end
 
@@ -17,7 +17,7 @@ class UserDomainsController < ApplicationController
 
   def create
     if @user
-      user_domain = UserDomain.new user_id: @user.id, 
+      user_domain = UserDomain.new user_id: @user.id,
         domain_id: @choosen_domain.id, role: :member
       save_user_domain user_domain
     else
@@ -32,7 +32,8 @@ class UserDomainsController < ApplicationController
     else
       flash[:danger] = t "manage_domain.add_manager_faild"
     end
-     redirect_to :back
+    @user_domain.create_event_add_manager_domain @user_domain.user_id
+    redirect_to :back
   end
 
   def destroy

@@ -24,4 +24,17 @@ class UserDomain < ApplicationRecord
       user_id: user_id, eventable_id: self.domain.id, eventable_type: UserDomain.name,
       eventitem_id: self.user.id
   end
+
+  def create_event_add_manager_domain user_id
+    if self.manager?
+      Event.create message: self.role,
+        user_id: user_id, eventable_id: self.domain.id, eventable_type: Domain.name,
+        eventitem_id: self.id
+    elsif self.member?
+      Event.create message: self.role,
+        user_id: user_id, eventable_id: self.domain.id, eventable_type: Domain.name,
+        eventitem_id: self.user.id
+    end
+  end
+
 end
